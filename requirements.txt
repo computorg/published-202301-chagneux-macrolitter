@@ -1,0 +1,13 @@
+jupyter-book>=0.11
+matplotlib
+numpy
+pycocotools 
+scipy 
+opencv_python
+pandas 
+pykalman
+filterpy
+scikit-image
+tqdm
+seaborn
+pytk
