@@ -1,0 +1,20 @@
+name: computo
+channels:
+    - conda-forge
+dependencies:
+    - python==3.9
+    - pip
+    - pip:
+        - jupyter
+        - numpy
+        - matplotlib
+        - pycocotools
+        - scipy 
+        - opencv_python
+        - pandas 
+        - pykalman
+        - filterpy
+        - scikit-image
+        - tqdm
+        - seaborn
+        - pytk
