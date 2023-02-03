@@ -5,40 +5,22 @@ author:
   - name: "Mathis Chagneux"
     corresponding: true
     email: mathis.chagneux@telecom-paris.fr
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: LTCI, Telecom Paris
   - name: "Sylvain Le Corff"
     email: sylvain.le_corff@telecom-sudparis.eu 
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: Telecom SudParis
   - name: "Pierre Gloaguen"
     email: pierre.gloaguen@agroparistech.fr 
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: Agro ParisTech
   - name: "Charles Ollion"
     email: charles.ollion@gmail.com
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: École Polytechnique
   - name: "Océane Lepâtre"
     email: olepatre@surfrider.eu
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: Surfrider Foundation Europe
   - name: "Antoine Bruge"
     email: abruge@surfrider.eu
-    url: TODO
-    orcid: 0000-0000-0000-0000
-    affiliation: TODO
-    affiliation-url: TODO
+    affiliation: Surfrider Foundation Europe
 date: last-modified
 abstract: >+
     Litter is a known cause of degradation in marine environments and most of
@@ -62,7 +44,7 @@ abstract: >+
 citation:
   type: article-journal
   container-title: "Computo"
-  doi: "xxxx"
+  doi: "10.57750/845m-f805"
   url: https://computo.sfds.asso.fr/template-computo-quarto
   issn: "2824-7795"
 bibliography: references.bib
@@ -75,12 +57,6 @@ format:
   computo-pdf: default
 jupyter: python3
 ---
-
-[![build status](https://github.com/computorg/{{< meta repo >}}/workflows/build/badge.svg)](https://github.com/computorg/{{< meta repo >}})
-[![review 1](https://img.shields.io/badge/review-report%201-blue)](https://github.com/computorg/{{< meta repo >}}/issues/1)
-[![review 2](https://img.shields.io/badge/review-report%202-blue)](https://github.com/computorg/{{< meta repo >}}/issues/2)
-[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
-ISSN 2824-7795
 
 ## Introduction
 
@@ -167,7 +143,6 @@ A first visual illustration of the second claim is presented via the following c
 
 
 
-from myst_nb import glue
 import matplotlib
 import matplotlib.pyplot as plt
 import os
@@ -715,7 +690,7 @@ $P(i,\ell)$ could be to use the marginal likelihood $\mathbb{P}(Z_n^\ell \in
 V_\delta(z_n^i))$, which is standard in modern MOT. 
 
 ::: {#fig-diagram}  
-![](assets/diagram.png)
+![](figures/diagram.png)
 
 Visual representation of the tracking pipeline.
 :::
@@ -1113,19 +1088,19 @@ for result in results:
     result.columns = column_names
     result.index = row_names
 
-results_S1.to_html()
+results_S1
 ```
 
 ```{python}
-results_S2.to_html()
+results_S2
 ```
 
 ```{python}
-results_S3.to_html()
+results_S3
 ```
 
 ```{python}
-results_All.to_html()
+results_All
 ```
 
 
@@ -1196,7 +1171,7 @@ Images containing items denoted as such will not be used for applications involv
 
 ::: {#fig-trash-categories-image}
 
-![](assets/trash_categories.png)
+![](figures/trash_categories.png)
 
 Trash categories defined to facilitate porting to a counting system that allows trash identification
 :::
@@ -1219,7 +1194,7 @@ differ in the following aspects.
 
 ::: {#fig-river-sections}
 
-![](assets/river_sections.png)
+![](figures/river_sections.png)
 
 Aerial view of the three river segments of the evaluation material
 :::

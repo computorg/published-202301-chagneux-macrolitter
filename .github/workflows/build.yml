@@ -8,33 +8,35 @@ on:
       - main
 
 env: # Change this if needed
-  quarto_file: content
+  quarto_file: ${{ github.event.repository.name }}
   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
+
 jobs:
-  computorticle:
+  build-deploy:
+    if: "!contains(github.event.head_commit.message, 'skip build')"
     runs-on: ubuntu-latest
 
     steps:
       - name: Checking out repository for Github action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Installing dependencies with Micromamba
         uses: mamba-org/provision-with-micromamba@main
         with:
           cache-env: true
 
-      - name: Installing quarto
+      - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
-
+  
       - name: Install Computo extension for Quarto
         run: |
             quarto add --no-prompt computorg/computo-quarto-extension
-
       - name: Rendering with Quarto
         shell: bash -l {0}
+
         run: |
             quarto render ${{ env.quarto_file }}.qmd
             mkdir _build
