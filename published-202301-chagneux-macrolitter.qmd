@@ -5,22 +5,38 @@ author:
   - name: "Mathis Chagneux"
     corresponding: true
     email: mathis.chagneux@telecom-paris.fr
-    affiliation: LTCI, Telecom Paris
+    url: https://www.linkedin.com/in/mathis-chagneux-140245158/?originalSubdomain=fr
+    affiliation: Telecom Paris, LTCI
+    affiliation-url: https://www.telecom-paris.fr/fr/recherche/laboratoires/laboratoire-traitement-et-communication-de-linformation-ltci
   - name: "Sylvain Le Corff"
-    email: sylvain.le_corff@telecom-sudparis.eu 
-    affiliation: Telecom SudParis
+    email: sylvain.le_corff@sorbonne-universite.fr
+    url: https://sylvainlc.github.io/
+    orcid: 0000-0001-5211-2328
+    affiliation: Sorbonne Université, UMR 8001 (LPSM)
+    affiliation-url: https://www.lpsm.paris/
   - name: "Pierre Gloaguen"
-    email: pierre.gloaguen@agroparistech.fr 
-    affiliation: Agro ParisTech
+    email: pierre.gloaguen@agroparistech.fr
+    url: https://papayoun.github.io/
+    orcid: 0000-0003-2239-5413
+    affiliation: AgroParisTech, UMR MIA 518
+    affiliation-url: https://mia-ps.inrae.fr/
   - name: "Charles Ollion"
     email: charles.ollion@gmail.com
-    affiliation: École Polytechnique
+    url: https://charlesollion.github.io/
+    orcid: 0000-0002-6763-701X
+    affiliation: Naia Science
   - name: "Océane Lepâtre"
     email: olepatre@surfrider.eu
+    url: https://fr.linkedin.com/in/oc%C3%A9ane-lep%C3%A2tre-675b38116
+    orcid: None
     affiliation: Surfrider Foundation Europe
+    affiliation-url: https://surfrider.eu/
   - name: "Antoine Bruge"
-    email: abruge@surfrider.eu
+    email: antoine.bruge@outlook.com
+    url: https://www.linkedin.com/in/antoinebruge/
+    orcid: 0000-0002-0548-234X
     affiliation: Surfrider Foundation Europe
+    affiliation-url: https://surfrider.eu/ 
 date: last-modified
 abstract: >+
     Litter is a known cause of degradation in marine environments and most of
