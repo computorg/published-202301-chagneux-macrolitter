@@ -1,10 +1,10 @@
 # Macrolitter video counting on riverbanks using state space models and moving cameras
 
 
-- [Mathis Chagneux](mathis.chagneux@telecom-paris.fr ), LTCI, Telecom Paris
-- Sylvain Le Corff, Telecom SudParis
-- Pierre Gloaguen, Agro ParisTech
-- Charles Ollion, Ecole Polytechnique
+- [Mathis Chagneux](mathis.chagneux@telecom-paris.fr ), Telecom Paris, LTCI
+- Sylvain Le Corff, Sorbonne Université, UMR 8001 (LPSM)
+- Pierre Gloaguen, AgroParisTech, UMR MIA 518
+- Charles Ollion, Naia Science
 - Océane Lepâtre, Surfrider Foundation Europe
 - Antoine Bruge, Surfrider Foundation Europe
 
