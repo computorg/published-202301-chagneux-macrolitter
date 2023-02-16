@@ -77,7 +77,7 @@ format:
 jupyter: python3
 ---
 
-## Introduction
+# Introduction
 
 
 Litter pollution concerns every part of the globe. Each year, almost ten
@@ -301,9 +301,9 @@ plt.show()
 ```
 
 
-## Related works
+# Related works
 
-### AI-automated counting
+## AI-automated counting
 
 Counting from images has been an ongoing challenge in computer vision. Most
 works can be divided into (i) detection-based methods where objects are
@@ -318,7 +318,7 @@ achieve better counts at every frame, none of these methods actually attempt
 to produce global video counts.
 
 
-### Computer vision for macro litter monitoring
+## Computer vision for macro litter monitoring
 
 Automatic macro litter monitoring in rivers is still a relatively nascent
 initiative, yet there have already been several attempts at using DNN-based
@@ -338,7 +338,7 @@ proposed to count litter directly in videos.
 
 
 
-### Multi-object tracking
+## Multi-object tracking
 
 Multi-object tracking usually involves object detection, data association and
 track management, with a very large number of methods already existing before
@@ -370,16 +370,16 @@ objects requires a new movement model, to take into account missing detections
 and large camera movements.
 
 
-## Datasets for training and evaluation
+# Datasets for training and evaluation
 
 Our main dataset of annotated images is used to train the object detector.
 Then, only for evaluation purposes, we provide videos with annotated object
 positions and known global counts. Our motivation is to avoid relying on
 training data that requires this resource-consuming process.
 
-### Images
+## Images
 
-#### Data collection
+### Data collection
 
 With help from volunteers, we compile photographs of litter stranded on river
 banks after increased river discharge, shot directly from kayaks navigating at
@@ -389,7 +389,7 @@ The resulting pictures depict trash items under the same conditions as the
 video footage we wish to count on, while spanning a wide variety of
 backgrounds, light conditions, viewing angles and picture quality.
 
-#### Bounding box annotation
+### Bounding box annotation
 
 For object detection applications, the images are annotated using a custom
 online platform where each object is located using a bounding box. In this
@@ -461,9 +461,9 @@ for imgId in imgIds:
     plt.axis('off')
 ```
 
-### Video sequences
+## Video sequences
 
-#### Data collection
+### Data collection
 
 For evaluation, an on-field study was conducted with 20 volunteers to manually
 count litter along three different riverbank sections in April 2021, on the
@@ -476,14 +476,14 @@ videos amount to 20 minutes of footage at 24 frames per second (fps) and a
 resolution of 1920x1080 pixels.
 
 
-#### Track annotation
+### Track annotation
 
 On video footage, we manually recovered all visible object trajectories on
 each river section using an online video annotation tool (more details
 in @sec-video-dataset-appendix for the precise methodology). From that, we
 obtained a collection of distinct object tracks spanning the entire footage.
 
-## Optical flow-based counting via Bayesian filtering and confidence regions
+# Optical flow-based counting via Bayesian filtering and confidence regions
 
 Our counting method is divided into several interacting blocks. First, a
 detector outputs a set of predicted positions for objects in the current
@@ -494,9 +494,9 @@ tracking module, proposing distinct tracks for each object. A final
 postprocessing step only keeps the best tracks which are enumerated to yield
 the final count.
 
-### Detector
+## Detector
 
-#### Center-based anchor-free detection
+### Center-based anchor-free detection
 
 In most benchmarks, the prediction quality of object attributes like bounding
 boxes is often used to  improve tracking. For counting, however, point
@@ -525,7 +525,7 @@ detector outputs a set $\mathcal{D}_n = \{z_n^i\}_{1 \leq i \leq D_n}$ where
 each $z_n^i = (x_n^i,y_n^i)$ specifies the coordinates of one of the $D_n$
 detected objects.
 
-### Training {#sec-detector_training}
+## Training {#sec-detector_training}
 
 Training the detector is done similarly as in @Proenca2020.
 
@@ -559,9 +559,9 @@ $$
 \right.
 $$
 
-### Bayesian tracking with optical flow {#sec-bayesian_tracking} 
+## Bayesian tracking with optical flow {#sec-bayesian_tracking} 
 
-#### Optical flow
+### Optical flow
 
 Between two timesteps $n-1$ and $n$, the optical flow $\Delta_n$ is a mapping
 satisfying the following consistency constraint (@paragios2006):
@@ -576,7 +576,7 @@ coordinate on that grid. To estimate $\Delta_n$, we choose a simple
 unsupervised Gunner-Farneback algorithm which does not require further
 annotations, see @farneback2003two for details.
 
-#### State space model {#sec-state_space_model}
+### State space model {#sec-state_space_model}
 
 Using optical flow as a building block, we posit a state space model where
 estimates of $\Delta_n$ are used as a time and state-dependent offset for the
@@ -604,7 +604,7 @@ centered Gaussian random variables with covariance matrix $R$.
 In the following, $Q$ and $R$ are assumed to be diagonal, and are
 hyperparameters set to values given in @sec-covariance_matrices.
 
-#### Approximations of the filtering distributions
+### Approximations of the filtering distributions
 
 Denoting $u_{1:k} = (u_1,\ldots,u_k)$ for any $k$ and sequence $(u_i)_{i \geq
 0}$, Bayesian filtering aims at computing the conditional distribution of
@@ -649,14 +649,14 @@ observations, as the contribution of $\Delta_k$ in every transition ensures
 that each filter can cope with arbitrary inter-frame motion to keep track of
 its target. 
 
-#### Generating potential object tracks
+### Generating potential object tracks
 
 The full MOT algorithm consists of a set of single-object trackers following
 the previous model, but each provided with distinct observations at every
 frame. These separate filters provide track proposals for every object
 detected in the video.
 
-### Data association using confidence regions {#sec-data_association}
+## Data association using confidence regions {#sec-data_association}
 
 Throughout the video, depending on various conditions on the incoming
 detections, existing trackers must be updated (with or without a new
@@ -714,7 +714,7 @@ V_\delta(z_n^i))$, which is standard in modern MOT.
 Visual representation of the tracking pipeline.
 :::
 
-### Counting
+## Counting
 
 At the end of the video, the previous process returns a set of candidate
 tracks. For counting purposes, we find that simple heuristics can be further
@@ -734,7 +734,7 @@ optimized for best count performance (see @sec-tau_kappa_appendix for a
 more comprehensive study).
 
 
-## Metrics for MOT-based counting
+# Metrics for MOT-based counting
 
 Counting in videos using embedded moving cameras is not a common task, and as
 such it requires a specific evaluation protocol to understand and compare the
@@ -743,7 +743,7 @@ even if some do provide insights to assist evaluation of count performance.
 Second, considering only raw counts on long videos gives little information on
 which of the final counts effectively arise from well detected objects.
 
-### Count-related MOT metrics
+## Count-related MOT metrics
 
 Popular MOT benchmarks usually report several sets of metrics such as ClearMOT
 (@bernardin2008) or IDF1 (@RistaniSZCT16) which can account for
@@ -753,7 +753,7 @@ and association using the Jaccard index. The following components of their
 work are relevant to our task (we provide equation numbers in the original
 paper for formal definitions).
 
-#### Detection
+### Detection
 
 First, when considering all frames independently, traditional detection recall
 ($\mathsf{DetRe}$) and precision ($\mathsf{DetPr}$) can be computed to assess the capabilities
@@ -781,7 +781,7 @@ Thus, low $\mathsf{DetRe}$ could theoretically be compensated with robust tracki
 Again, this suggests that low $\mathsf{DetPr}$ may allow decent counting performance.
 
 
-#### Association
+### Association
 
 HOTA association metrics are built to measure tracking performance
 irrespective of the detection capabilities, by comparing predicted tracks
@@ -818,7 +818,7 @@ Consequently, $\mathsf{AssRe}$ does not account for tracks predicted from stream
 arising from rocks, water reflections, etc).
 Since such tracks induce false counts, a tracker which produces the fewest is better, but MOT metrics do not measure it.
 
-### Count metrics
+## Count metrics
 
 Denoting by $\mathsf{\hat{N}}$ and $\mathsf{N}$ the respective predicted and ground truth
 counts for the validation material, the error $\mathsf{\hat{N}} - \mathsf{N}$ is misleading as
@@ -826,7 +826,7 @@ no information is provided on the quality of the predicted counts.
 Additionally, results on the original validation footage do not measure the
 statistical variability of the proposed estimators.
 
-#### Count decomposition
+### Count decomposition
 
 Define $i \in [\![1, \mathsf{N}]\!]$ and $j \in [\![1, \mathsf{\hat{N}}]\!]$ the labels of the
 annotated ground truth tracks and the predicted tracks, respectively. At
@@ -883,7 +883,7 @@ For more complicated data, an adaptation of such contributions into proper
 counting metrics could be valuable. 
 
 
-#### Statistics
+### Statistics
 
 Since the original validation set comprises only a few unequally long videos,
 only absolute results are available. Splitting the original sequences into
@@ -893,7 +893,8 @@ $\hat{\sigma}_{\mathsf{\hat{N}}_\bullet}$ the associated empirical standard devi
 computed on the set of short sequences.
 
 
-## Experiments
+# Experiments
+
 We denote by $S_1$, $S_2$ and $S_3$ the three river sections of the evaluation material and split the associated footage into independent segments of 30 seconds. We further divide this material into two distinct validation (6min30) and test (7min) splits. 
 
 
@@ -922,7 +923,7 @@ intermediate framerate to capture all objects while reducing the computational
 burden.
 
 
-### Detection
+## Detection
 
 In the following section, we present the performance of the trained detector.
 Having annotated all frames of the evaluation videos, we directly compute
@@ -1003,7 +1004,8 @@ table_det.index = ['S1','S2','S3','All']
 display(table_det)
 ```
 
-### Counts
+## Counts
+
 To fairly compare the three solutions, we calibrate the hyperparameters of our
 postprocessing block on the validation split and keep the values that minimize
 the overall count error $\mathsf{\hat{N}}$ for each of them separately (see
@@ -1123,7 +1125,7 @@ results_All
 ```
 
 
-##### Detailed results on individual segments
+#### Detailed results on individual segments
 
 ```{python}
 
@@ -1140,7 +1142,7 @@ for ax, title, tracker_name in zip(axes, pretty_method_names,  method_names):
 
 
 
-## Practical impact and future goals
+# Practical impact and future goals
 
 We successfully tackled video object counting on river banks, in particular issues which could be addressed independently of detection quality.
 Moreover the methodology developed to assess count quality enables us to precisely highlight the challenges that pertain to video object counting on river banks.
@@ -1156,12 +1158,11 @@ The resulting field data will help better understand litter origin, allowing to 
 Correlations between macro litter density and environmental parameters will be studied (e.g., population density, catchment size, land use and hydromorphology).
 Finally, our work naturally benefits any extension of macrolitter monitoring in other areas (urban, coastal, etc) that may rely on a similar setup of moving cameras.
 
+# Supplements
 
-## Supplements
+## Details on the image dataset {#sec-image_dataset_appendix}
 
-### Details on the image dataset {#sec-image_dataset_appendix}
-
-#### Categories
+### Categories
 
 In this work, we do not seek to precisely predict the proportions of the
 different types of counted litter. However, we build our dataset to allow
@@ -1196,9 +1197,9 @@ Trash categories defined to facilitate porting to a counting system that allows 
 :::
 
 
-### Details on the evaluation videos {#sec-video-dataset-appendix}
+## Details on the evaluation videos {#sec-video-dataset-appendix}
 
-#### River segments 
+### River segments 
 
 In this section, we provide further details on the evaluation material.
 @fig-river-sections shows the setup and positioning of the three river
@@ -1228,9 +1229,9 @@ The following items provide further details on the exact annotation process.
 - We do not provide inferred locations when an object is fully occluded, but tracks restart with the same identity whenever the object becomes visible again.
 - Tracks stop whenever an object becomes indistinguishable and will not reappear again.
 
-### Implementation details for the tracking module {#sec-tracking_module_appendix}
+## Implementation details for the tracking module {#sec-tracking_module_appendix}
 
-#### Covariance matrices for state and observation noises {#sec-covariance_matrices}
+### Covariance matrices for state and observation noises {#sec-covariance_matrices}
 
 In our state space model, $Q$ models the noise associated with the movement
 model we posit in @sec-bayesian_tracking involving optical flow estimates,
@@ -1253,7 +1254,7 @@ As long as values are meaningful relative to the image dimensions and the size o
 
 
 
-#### Influence of $\tau$ and $\kappa$ {#sec-tau_kappa_appendix}
+### Influence of $\tau$ and $\kappa$ {#sec-tau_kappa_appendix}
 
 An understanding of $\kappa$, $\tau$ and $\nu$ can be stated as follows.
 For any track, given a value for $\kappa$ and $\nu$, an observation at time $n$ is only kept if there are also $\nu \cdot \kappa$ observations in the temporal window of size $\kappa$ that surrounds $n$ (windows are centered around $n$ except at the start and end of the track).
@@ -1339,7 +1340,7 @@ for method_name, pretty_method_name in zip(method_names, pretty_method_names):
     hyperparameters(method_name.split('kappa')[0][:-1], pretty_method_name)
 ```
 
-### Bayesian filtering {#sec-bayesian_filtering}
+## Bayesian filtering {#sec-bayesian_filtering}
 
 Considering a state space model with $(X_k, Z_k)_{k \geq 0}$ the random processes for the states and observations, respectively, the filtering recursions are given by:
 
@@ -1367,7 +1368,7 @@ $$Q_k = Q, R_k = R,$$
 $$B_k = I, b_k = 0.$$
 
 
-### Computing the confidence regions {#sec-confidence_regions_appendix}
+## Computing the confidence regions {#sec-confidence_regions_appendix}
 
 
 In words, $P(i,\ell)$ is the mass in $V_\delta(z_n^i) \subset \mathbb{R}^2$ of the
@@ -1412,7 +1413,7 @@ the corresponding confidence regions (see @sec-tracking_module_appendix above). 
 this distribution when SMC is used, and performance comparisons between the
 EKF, UKF and SMC versions of our trackers are discussed.
 
-#### SMC-based tracking
+### SMC-based tracking
 
 Denote $\mathbb{Q}_k$ the filtering distribution (ie. that of $Z_k$ given $X_{1:k}$) for the HMM $(X_k,Z_k)_{k \geq 1}$  (omitting the dependency on the observations for notation ease).
 Using a set of samples $\{X_k^i\}_{1 \leq i \leq N}$ and importance weights $\{w_k^i\}_{1 \leq i \leq N}$, SMC methods build an approximation of the following form:
@@ -1450,7 +1451,7 @@ recover object identities via $\widehat{\mathbb{L}}_n^{\ell}(V_\delta(z_n^i))$
 computed for all incoming detections $\mathcal{D}_n = \{z_n^i\}_{1 \leq i \leq D_n}$ and each of the $1 \leq \ell \leq L_n$ filters, where $\widehat{\mathbb{L}}_n^{\ell}$ is the predictive distribution associated with the $\ell$-th filter.
 
 
-#### Performance comparison
+### Performance comparison
 
 In theory, sampling-based methods like UKF and SMC are better suited for
 nonlinear state space models like the one we propose in @sec-state_space_model.
@@ -1461,4 +1462,9 @@ Therefore, our motion estimates via the optical flow $\Delta_n$ prove very relia
 This comforts us into keeping it as a faster and computationally simpler option.
 That said, this conclusion might not hold in scenarios where camera motion is even stronger, which was our main motivation to develop a flexible tracking solution and to provide implementations of UKF and SMC versions.
 This allows easier extension of our work to more challenging data.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
 
