@@ -37,7 +37,8 @@ author:
     orcid: 0000-0002-0548-234X
     affiliation: Surfrider Foundation Europe
     affiliation-url: https://surfrider.eu/ 
-date: last-modified
+date: 2023-02-16
+date-modified: last-modified
 abstract: >+
     Litter is a known cause of degradation in marine environments and most of
     it travels in rivers before reaching the oceans. In this paper, we present
@@ -60,14 +61,16 @@ abstract: >+
 citation:
   type: article-journal
   container-title: "Computo"
+  publisher: "Société Française de Statistique"
   doi: "10.57750/845m-f805"
-  url: https://computo.sfds.asso.fr/template-computo-quarto
+  url: https://computo.sfds.asso.fr/published-202301-chagneux-macrolitter
   issn: "2824-7795"
+google-scholar: true
 bibliography: references.bib
 github-user: computorg
 repo: "published-20230103-chagneux-macrolitter"
 draft: false
-published: false # will be set to true once accepted
+published: true
 format:
   computo-html: default
   computo-pdf: default
