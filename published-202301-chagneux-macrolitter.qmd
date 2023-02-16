@@ -68,7 +68,7 @@ citation:
 google-scholar: true
 bibliography: references.bib
 github-user: computorg
-repo: "published-20230103-chagneux-macrolitter"
+repo: "published-202301-chagneux-macrolitter"
 draft: false
 published: true
 format:
