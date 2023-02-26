@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.208">
+<meta name="generator" content="quarto-1.3.228">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -27,6 +27,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -90,11 +91,12 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -108,8 +110,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="published-202301-chagneux-macrolitter_files/libs/clipboard/clipboard.min.js"></script>
@@ -160,7 +161,7 @@ background: #034E79;
 <meta name="citation_abstract" content="Litter is a known cause of degradation in marine environments and most of it travels in rivers before reaching the oceans. In this paper, we present a novel algorithm to assist waste monitoring along watercourses. While several attempts have been made to quantify litter using neural object detection in photographs of floating items, we tackle the more challenging task of counting directly in videos using boat-embedded cameras. We rely on multi-object tracking (MOT) but focus on the key pitfalls of false and redundant counts which arise in typical scenarios of poor detection performance. Our system only requires supervision at the image level and performs Bayesian filtering via a state space model based on optical flow. We present a new open image dataset gathered through a crowdsourced campaign and used to train a center-based anchor-free object detector. Realistic video footage assembled by water monitoring experts is annotated and provided for evaluation. Improvements in count quality are demonstrated against systems built from state-of-the-art multi-object trackers sharing the same detection capabilities. A precise error decomposition allows clear analysis and highlights the remaining challenges.
 ">
 <meta name="citation_author" content="Mathis Chagneux">
-<meta name="citation_author" content="Sylvain Le Corff">
+<meta name="citation_author" content="Sylvain LeCorff">
 <meta name="citation_author" content="Pierre Gloaguen">
 <meta name="citation_author" content="Charles Ollion">
 <meta name="citation_author" content="Océane Lepâtre">
@@ -334,7 +335,7 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">February 19, 2023</p>
+        <p class="date-modified">February 26, 2023</p>
       </div>
     </div>
       
@@ -365,83 +366,83 @@ ISSN 2824-7795</p>
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a></li>
-  <li><a href="#related-works" id="toc-related-works" class="nav-link" data-scroll-target="#related-works"><span class="toc-section-number">2</span>  Related works</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#related-works" id="toc-related-works" class="nav-link" data-scroll-target="#related-works"><span class="header-section-number">2</span> Related works</a>
   <ul class="collapse">
-  <li><a href="#ai-automated-counting" id="toc-ai-automated-counting" class="nav-link" data-scroll-target="#ai-automated-counting"><span class="toc-section-number">2.1</span>  AI-automated counting</a></li>
-  <li><a href="#computer-vision-for-macro-litter-monitoring" id="toc-computer-vision-for-macro-litter-monitoring" class="nav-link" data-scroll-target="#computer-vision-for-macro-litter-monitoring"><span class="toc-section-number">2.2</span>  Computer vision for macro litter monitoring</a></li>
-  <li><a href="#multi-object-tracking" id="toc-multi-object-tracking" class="nav-link" data-scroll-target="#multi-object-tracking"><span class="toc-section-number">2.3</span>  Multi-object tracking</a></li>
+  <li><a href="#ai-automated-counting" id="toc-ai-automated-counting" class="nav-link" data-scroll-target="#ai-automated-counting"><span class="header-section-number">2.1</span> AI-automated counting</a></li>
+  <li><a href="#computer-vision-for-macro-litter-monitoring" id="toc-computer-vision-for-macro-litter-monitoring" class="nav-link" data-scroll-target="#computer-vision-for-macro-litter-monitoring"><span class="header-section-number">2.2</span> Computer vision for macro litter monitoring</a></li>
+  <li><a href="#multi-object-tracking" id="toc-multi-object-tracking" class="nav-link" data-scroll-target="#multi-object-tracking"><span class="header-section-number">2.3</span> Multi-object tracking</a></li>
   </ul></li>
-  <li><a href="#datasets-for-training-and-evaluation" id="toc-datasets-for-training-and-evaluation" class="nav-link" data-scroll-target="#datasets-for-training-and-evaluation"><span class="toc-section-number">3</span>  Datasets for training and evaluation</a>
+  <li><a href="#datasets-for-training-and-evaluation" id="toc-datasets-for-training-and-evaluation" class="nav-link" data-scroll-target="#datasets-for-training-and-evaluation"><span class="header-section-number">3</span> Datasets for training and evaluation</a>
   <ul class="collapse">
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"><span class="toc-section-number">3.1</span>  Images</a>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images"><span class="header-section-number">3.1</span> Images</a>
   <ul class="collapse">
-  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection"><span class="toc-section-number">3.1.1</span>  Data collection</a></li>
-  <li><a href="#bounding-box-annotation" id="toc-bounding-box-annotation" class="nav-link" data-scroll-target="#bounding-box-annotation"><span class="toc-section-number">3.1.2</span>  Bounding box annotation</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection"><span class="header-section-number">3.1.1</span> Data collection</a></li>
+  <li><a href="#bounding-box-annotation" id="toc-bounding-box-annotation" class="nav-link" data-scroll-target="#bounding-box-annotation"><span class="header-section-number">3.1.2</span> Bounding box annotation</a></li>
   </ul></li>
-  <li><a href="#video-sequences" id="toc-video-sequences" class="nav-link" data-scroll-target="#video-sequences"><span class="toc-section-number">3.2</span>  Video sequences</a>
+  <li><a href="#video-sequences" id="toc-video-sequences" class="nav-link" data-scroll-target="#video-sequences"><span class="header-section-number">3.2</span> Video sequences</a>
   <ul class="collapse">
-  <li><a href="#data-collection-1" id="toc-data-collection-1" class="nav-link" data-scroll-target="#data-collection-1"><span class="toc-section-number">3.2.1</span>  Data collection</a></li>
-  <li><a href="#track-annotation" id="toc-track-annotation" class="nav-link" data-scroll-target="#track-annotation"><span class="toc-section-number">3.2.2</span>  Track annotation</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions" id="toc-optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions" class="nav-link" data-scroll-target="#optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions"><span class="toc-section-number">4</span>  Optical flow-based counting via Bayesian filtering and confidence regions</a>
-  <ul class="collapse">
-  <li><a href="#detector" id="toc-detector" class="nav-link" data-scroll-target="#detector"><span class="toc-section-number">4.1</span>  Detector</a>
-  <ul class="collapse">
-  <li><a href="#center-based-anchor-free-detection" id="toc-center-based-anchor-free-detection" class="nav-link" data-scroll-target="#center-based-anchor-free-detection"><span class="toc-section-number">4.1.1</span>  Center-based anchor-free detection</a></li>
-  </ul></li>
-  <li><a href="#sec-detector_training" id="toc-sec-detector_training" class="nav-link" data-scroll-target="#sec-detector_training"><span class="toc-section-number">4.2</span>  Training</a></li>
-  <li><a href="#sec-bayesian_tracking" id="toc-sec-bayesian_tracking" class="nav-link" data-scroll-target="#sec-bayesian_tracking"><span class="toc-section-number">4.3</span>  Bayesian tracking with optical flow</a>
-  <ul class="collapse">
-  <li><a href="#optical-flow" id="toc-optical-flow" class="nav-link" data-scroll-target="#optical-flow"><span class="toc-section-number">4.3.1</span>  Optical flow</a></li>
-  <li><a href="#sec-state_space_model" id="toc-sec-state_space_model" class="nav-link" data-scroll-target="#sec-state_space_model"><span class="toc-section-number">4.3.2</span>  State space model</a></li>
-  <li><a href="#approximations-of-the-filtering-distributions" id="toc-approximations-of-the-filtering-distributions" class="nav-link" data-scroll-target="#approximations-of-the-filtering-distributions"><span class="toc-section-number">4.3.3</span>  Approximations of the filtering distributions</a></li>
-  <li><a href="#generating-potential-object-tracks" id="toc-generating-potential-object-tracks" class="nav-link" data-scroll-target="#generating-potential-object-tracks"><span class="toc-section-number">4.3.4</span>  Generating potential object tracks</a></li>
-  </ul></li>
-  <li><a href="#sec-data_association" id="toc-sec-data_association" class="nav-link" data-scroll-target="#sec-data_association"><span class="toc-section-number">4.4</span>  Data association using confidence regions</a></li>
-  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting"><span class="toc-section-number">4.5</span>  Counting</a></li>
-  </ul></li>
-  <li><a href="#metrics-for-mot-based-counting" id="toc-metrics-for-mot-based-counting" class="nav-link" data-scroll-target="#metrics-for-mot-based-counting"><span class="toc-section-number">5</span>  Metrics for MOT-based counting</a>
-  <ul class="collapse">
-  <li><a href="#count-related-mot-metrics" id="toc-count-related-mot-metrics" class="nav-link" data-scroll-target="#count-related-mot-metrics"><span class="toc-section-number">5.1</span>  Count-related MOT metrics</a>
-  <ul class="collapse">
-  <li><a href="#detection" id="toc-detection" class="nav-link" data-scroll-target="#detection"><span class="toc-section-number">5.1.1</span>  Detection</a></li>
-  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association"><span class="toc-section-number">5.1.2</span>  Association</a></li>
-  </ul></li>
-  <li><a href="#count-metrics" id="toc-count-metrics" class="nav-link" data-scroll-target="#count-metrics"><span class="toc-section-number">5.2</span>  Count metrics</a>
-  <ul class="collapse">
-  <li><a href="#count-decomposition" id="toc-count-decomposition" class="nav-link" data-scroll-target="#count-decomposition"><span class="toc-section-number">5.2.1</span>  Count decomposition</a></li>
-  <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics"><span class="toc-section-number">5.2.2</span>  Statistics</a></li>
+  <li><a href="#data-collection-1" id="toc-data-collection-1" class="nav-link" data-scroll-target="#data-collection-1"><span class="header-section-number">3.2.1</span> Data collection</a></li>
+  <li><a href="#track-annotation" id="toc-track-annotation" class="nav-link" data-scroll-target="#track-annotation"><span class="header-section-number">3.2.2</span> Track annotation</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments"><span class="toc-section-number">6</span>  Experiments</a>
+  <li><a href="#optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions" id="toc-optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions" class="nav-link" data-scroll-target="#optical-flow-based-counting-via-bayesian-filtering-and-confidence-regions"><span class="header-section-number">4</span> Optical flow-based counting via Bayesian filtering and confidence regions</a>
   <ul class="collapse">
-  <li><a href="#detection-1" id="toc-detection-1" class="nav-link" data-scroll-target="#detection-1"><span class="toc-section-number">6.1</span>  Detection</a></li>
-  <li><a href="#counts" id="toc-counts" class="nav-link" data-scroll-target="#counts"><span class="toc-section-number">6.2</span>  Counts</a></li>
+  <li><a href="#detector" id="toc-detector" class="nav-link" data-scroll-target="#detector"><span class="header-section-number">4.1</span> Detector</a>
+  <ul class="collapse">
+  <li><a href="#center-based-anchor-free-detection" id="toc-center-based-anchor-free-detection" class="nav-link" data-scroll-target="#center-based-anchor-free-detection"><span class="header-section-number">4.1.1</span> Center-based anchor-free detection</a></li>
   </ul></li>
-  <li><a href="#practical-impact-and-future-goals" id="toc-practical-impact-and-future-goals" class="nav-link" data-scroll-target="#practical-impact-and-future-goals"><span class="toc-section-number">7</span>  Practical impact and future goals</a></li>
-  <li><a href="#supplements" id="toc-supplements" class="nav-link" data-scroll-target="#supplements"><span class="toc-section-number">8</span>  Supplements</a>
+  <li><a href="#sec-detector_training" id="toc-sec-detector_training" class="nav-link" data-scroll-target="#sec-detector_training"><span class="header-section-number">4.2</span> Training</a></li>
+  <li><a href="#sec-bayesian_tracking" id="toc-sec-bayesian_tracking" class="nav-link" data-scroll-target="#sec-bayesian_tracking"><span class="header-section-number">4.3</span> Bayesian tracking with optical flow</a>
   <ul class="collapse">
-  <li><a href="#sec-image_dataset_appendix" id="toc-sec-image_dataset_appendix" class="nav-link" data-scroll-target="#sec-image_dataset_appendix"><span class="toc-section-number">8.1</span>  Details on the image dataset</a>
-  <ul class="collapse">
-  <li><a href="#categories" id="toc-categories" class="nav-link" data-scroll-target="#categories"><span class="toc-section-number">8.1.1</span>  Categories</a></li>
+  <li><a href="#optical-flow" id="toc-optical-flow" class="nav-link" data-scroll-target="#optical-flow"><span class="header-section-number">4.3.1</span> Optical flow</a></li>
+  <li><a href="#sec-state_space_model" id="toc-sec-state_space_model" class="nav-link" data-scroll-target="#sec-state_space_model"><span class="header-section-number">4.3.2</span> State space model</a></li>
+  <li><a href="#approximations-of-the-filtering-distributions" id="toc-approximations-of-the-filtering-distributions" class="nav-link" data-scroll-target="#approximations-of-the-filtering-distributions"><span class="header-section-number">4.3.3</span> Approximations of the filtering distributions</a></li>
+  <li><a href="#generating-potential-object-tracks" id="toc-generating-potential-object-tracks" class="nav-link" data-scroll-target="#generating-potential-object-tracks"><span class="header-section-number">4.3.4</span> Generating potential object tracks</a></li>
   </ul></li>
-  <li><a href="#sec-video-dataset-appendix" id="toc-sec-video-dataset-appendix" class="nav-link" data-scroll-target="#sec-video-dataset-appendix"><span class="toc-section-number">8.2</span>  Details on the evaluation videos</a>
-  <ul class="collapse">
-  <li><a href="#river-segments" id="toc-river-segments" class="nav-link" data-scroll-target="#river-segments"><span class="toc-section-number">8.2.1</span>  River segments</a></li>
+  <li><a href="#sec-data_association" id="toc-sec-data_association" class="nav-link" data-scroll-target="#sec-data_association"><span class="header-section-number">4.4</span> Data association using confidence regions</a></li>
+  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting"><span class="header-section-number">4.5</span> Counting</a></li>
   </ul></li>
-  <li><a href="#sec-tracking_module_appendix" id="toc-sec-tracking_module_appendix" class="nav-link" data-scroll-target="#sec-tracking_module_appendix"><span class="toc-section-number">8.3</span>  Implementation details for the tracking module</a>
+  <li><a href="#metrics-for-mot-based-counting" id="toc-metrics-for-mot-based-counting" class="nav-link" data-scroll-target="#metrics-for-mot-based-counting"><span class="header-section-number">5</span> Metrics for MOT-based counting</a>
   <ul class="collapse">
-  <li><a href="#sec-covariance_matrices" id="toc-sec-covariance_matrices" class="nav-link" data-scroll-target="#sec-covariance_matrices"><span class="toc-section-number">8.3.1</span>  Covariance matrices for state and observation noises</a></li>
-  <li><a href="#sec-tau_kappa_appendix" id="toc-sec-tau_kappa_appendix" class="nav-link" data-scroll-target="#sec-tau_kappa_appendix"><span class="toc-section-number">8.3.2</span>  Influence of <span class="math inline">\tau</span> and <span class="math inline">\kappa</span></a></li>
+  <li><a href="#count-related-mot-metrics" id="toc-count-related-mot-metrics" class="nav-link" data-scroll-target="#count-related-mot-metrics"><span class="header-section-number">5.1</span> Count-related MOT metrics</a>
+  <ul class="collapse">
+  <li><a href="#detection" id="toc-detection" class="nav-link" data-scroll-target="#detection"><span class="header-section-number">5.1.1</span> Detection</a></li>
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association"><span class="header-section-number">5.1.2</span> Association</a></li>
   </ul></li>
-  <li><a href="#sec-bayesian_filtering" id="toc-sec-bayesian_filtering" class="nav-link" data-scroll-target="#sec-bayesian_filtering"><span class="toc-section-number">8.4</span>  Bayesian filtering</a></li>
-  <li><a href="#sec-confidence_regions_appendix" id="toc-sec-confidence_regions_appendix" class="nav-link" data-scroll-target="#sec-confidence_regions_appendix"><span class="toc-section-number">8.5</span>  Computing the confidence regions</a>
+  <li><a href="#count-metrics" id="toc-count-metrics" class="nav-link" data-scroll-target="#count-metrics"><span class="header-section-number">5.2</span> Count metrics</a>
   <ul class="collapse">
-  <li><a href="#sec-impact-algorithm-appendix" id="toc-sec-impact-algorithm-appendix" class="nav-link" data-scroll-target="#sec-impact-algorithm-appendix"><span class="toc-section-number">8.5.1</span>  Impact of the filtering algorithm</a></li>
-  <li><a href="#smc-based-tracking" id="toc-smc-based-tracking" class="nav-link" data-scroll-target="#smc-based-tracking"><span class="toc-section-number">8.5.2</span>  SMC-based tracking</a></li>
-  <li><a href="#performance-comparison" id="toc-performance-comparison" class="nav-link" data-scroll-target="#performance-comparison"><span class="toc-section-number">8.5.3</span>  Performance comparison</a></li>
+  <li><a href="#count-decomposition" id="toc-count-decomposition" class="nav-link" data-scroll-target="#count-decomposition"><span class="header-section-number">5.2.1</span> Count decomposition</a></li>
+  <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics"><span class="header-section-number">5.2.2</span> Statistics</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments"><span class="header-section-number">6</span> Experiments</a>
+  <ul class="collapse">
+  <li><a href="#detection-1" id="toc-detection-1" class="nav-link" data-scroll-target="#detection-1"><span class="header-section-number">6.1</span> Detection</a></li>
+  <li><a href="#counts" id="toc-counts" class="nav-link" data-scroll-target="#counts"><span class="header-section-number">6.2</span> Counts</a></li>
+  </ul></li>
+  <li><a href="#practical-impact-and-future-goals" id="toc-practical-impact-and-future-goals" class="nav-link" data-scroll-target="#practical-impact-and-future-goals"><span class="header-section-number">7</span> Practical impact and future goals</a></li>
+  <li><a href="#supplements" id="toc-supplements" class="nav-link" data-scroll-target="#supplements"><span class="header-section-number">8</span> Supplements</a>
+  <ul class="collapse">
+  <li><a href="#sec-image_dataset_appendix" id="toc-sec-image_dataset_appendix" class="nav-link" data-scroll-target="#sec-image_dataset_appendix"><span class="header-section-number">8.1</span> Details on the image dataset</a>
+  <ul class="collapse">
+  <li><a href="#categories" id="toc-categories" class="nav-link" data-scroll-target="#categories"><span class="header-section-number">8.1.1</span> Categories</a></li>
+  </ul></li>
+  <li><a href="#sec-video-dataset-appendix" id="toc-sec-video-dataset-appendix" class="nav-link" data-scroll-target="#sec-video-dataset-appendix"><span class="header-section-number">8.2</span> Details on the evaluation videos</a>
+  <ul class="collapse">
+  <li><a href="#river-segments" id="toc-river-segments" class="nav-link" data-scroll-target="#river-segments"><span class="header-section-number">8.2.1</span> River segments</a></li>
+  </ul></li>
+  <li><a href="#sec-tracking_module_appendix" id="toc-sec-tracking_module_appendix" class="nav-link" data-scroll-target="#sec-tracking_module_appendix"><span class="header-section-number">8.3</span> Implementation details for the tracking module</a>
+  <ul class="collapse">
+  <li><a href="#sec-covariance_matrices" id="toc-sec-covariance_matrices" class="nav-link" data-scroll-target="#sec-covariance_matrices"><span class="header-section-number">8.3.1</span> Covariance matrices for state and observation noises</a></li>
+  <li><a href="#sec-tau_kappa_appendix" id="toc-sec-tau_kappa_appendix" class="nav-link" data-scroll-target="#sec-tau_kappa_appendix"><span class="header-section-number">8.3.2</span> Influence of <span class="math inline">\tau</span> and <span class="math inline">\kappa</span></a></li>
+  </ul></li>
+  <li><a href="#sec-bayesian_filtering" id="toc-sec-bayesian_filtering" class="nav-link" data-scroll-target="#sec-bayesian_filtering"><span class="header-section-number">8.4</span> Bayesian filtering</a></li>
+  <li><a href="#sec-confidence_regions_appendix" id="toc-sec-confidence_regions_appendix" class="nav-link" data-scroll-target="#sec-confidence_regions_appendix"><span class="header-section-number">8.5</span> Computing the confidence regions</a>
+  <ul class="collapse">
+  <li><a href="#sec-impact-algorithm-appendix" id="toc-sec-impact-algorithm-appendix" class="nav-link" data-scroll-target="#sec-impact-algorithm-appendix"><span class="header-section-number">8.5.1</span> Impact of the filtering algorithm</a></li>
+  <li><a href="#smc-based-tracking" id="toc-smc-based-tracking" class="nav-link" data-scroll-target="#smc-based-tracking"><span class="header-section-number">8.5.2</span> SMC-based tracking</a></li>
+  <li><a href="#performance-comparison" id="toc-performance-comparison" class="nav-link" data-scroll-target="#performance-comparison"><span class="header-section-number">8.5.3</span> Performance comparison</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -611,7 +612,7 @@ Tracking...</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tracking with SORT...
 --- Begin SORT internal logs
-Total Tracking took: 0.106 seconds for 360 frames or 3401.7 FPS
+Total Tracking took: 0.123 seconds for 360 frames or 2934.8 FPS
 --- End</code></pre>
 </div>
 </div>
@@ -1033,32 +1034,32 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <div>
 
 
-<table class="dataframe table table-sm table-striped" data-border="1">
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th></th>
-<th>DetRe*</th>
-<th>DetPr*</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">DetRe*</th>
+<th data-quarto-table-cell-role="th">DetPr*</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>S1</th>
+<td data-quarto-table-cell-role="th">S1</td>
 <td>37.2</td>
 <td>60.7</td>
 </tr>
 <tr class="even">
-<th>S2</th>
+<td data-quarto-table-cell-role="th">S2</td>
 <td>29.4</td>
 <td>38.2</td>
 </tr>
 <tr class="odd">
-<th>S3</th>
+<td data-quarto-table-cell-role="th">S3</td>
 <td>35.1</td>
 <td>53.6</td>
 </tr>
 <tr class="even">
-<th>All</th>
+<td data-quarto-table-cell-role="th">All</td>
 <td>35.5</td>
 <td>55.1</td>
 </tr>
@@ -1174,20 +1175,20 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <div>
 
 
-<table class="dataframe table table-sm table-striped" data-border="1">
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th></th>
-<th>AssRe</th>
-<th>CountRe</th>
-<th>σ(CountRe)</th>
-<th>CountPr</th>
-<th>σ(CountPr)</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AssRe</th>
+<th data-quarto-table-cell-role="th">CountRe</th>
+<th data-quarto-table-cell-role="th">σ(CountRe)</th>
+<th data-quarto-table-cell-role="th">CountPr</th>
+<th data-quarto-table-cell-role="th">σ(CountPr)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>FairMOT</th>
+<td data-quarto-table-cell-role="th">FairMOT</td>
 <td>62.0</td>
 <td>31.2</td>
 <td>25.6</td>
@@ -1195,7 +1196,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>24.6</td>
 </tr>
 <tr class="even">
-<th>Sort</th>
+<td data-quarto-table-cell-role="th">Sort</td>
 <td>65.6</td>
 <td>43.8</td>
 <td>26.4</td>
@@ -1203,7 +1204,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>20.2</td>
 </tr>
 <tr class="odd">
-<th>Ours</th>
+<td data-quarto-table-cell-role="th">Ours</td>
 <td>79.5</td>
 <td>50.0</td>
 <td>27.9</td>
@@ -1225,20 +1226,20 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <div>
 
 
-<table class="dataframe table table-sm table-striped" data-border="1">
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th></th>
-<th>AssRe</th>
-<th>CountRe</th>
-<th>σ(CountRe)</th>
-<th>CountPr</th>
-<th>σ(CountPr)</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AssRe</th>
+<th data-quarto-table-cell-role="th">CountRe</th>
+<th data-quarto-table-cell-role="th">σ(CountRe)</th>
+<th data-quarto-table-cell-role="th">CountPr</th>
+<th data-quarto-table-cell-role="th">σ(CountPr)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>FairMOT</th>
+<td data-quarto-table-cell-role="th">FairMOT</td>
 <td>8.7</td>
 <td>12.5</td>
 <td>35.4</td>
@@ -1246,7 +1247,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th>Sort</th>
+<td data-quarto-table-cell-role="th">Sort</td>
 <td>20.7</td>
 <td>12.5</td>
 <td>35.4</td>
@@ -1254,7 +1255,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>0.0</td>
 </tr>
 <tr class="odd">
-<th>Ours</th>
+<td data-quarto-table-cell-role="th">Ours</td>
 <td>72.7</td>
 <td>50.0</td>
 <td>0.0</td>
@@ -1276,20 +1277,20 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <div>
 
 
-<table class="dataframe table table-sm table-striped" data-border="1">
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th></th>
-<th>AssRe</th>
-<th>CountRe</th>
-<th>σ(CountRe)</th>
-<th>CountPr</th>
-<th>σ(CountPr)</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AssRe</th>
+<th data-quarto-table-cell-role="th">CountRe</th>
+<th data-quarto-table-cell-role="th">σ(CountRe)</th>
+<th data-quarto-table-cell-role="th">CountPr</th>
+<th data-quarto-table-cell-role="th">σ(CountPr)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>FairMOT</th>
+<td data-quarto-table-cell-role="th">FairMOT</td>
 <td>17.4</td>
 <td>25.0</td>
 <td>47.1</td>
@@ -1297,7 +1298,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>50.0</td>
 </tr>
 <tr class="even">
-<th>Sort</th>
+<td data-quarto-table-cell-role="th">Sort</td>
 <td>19.6</td>
 <td>25.0</td>
 <td>47.1</td>
@@ -1305,7 +1306,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>50.9</td>
 </tr>
 <tr class="odd">
-<th>Ours</th>
+<td data-quarto-table-cell-role="th">Ours</td>
 <td>24.6</td>
 <td>37.5</td>
 <td>41.7</td>
@@ -1327,20 +1328,20 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <div>
 
 
-<table class="dataframe table table-sm table-striped" data-border="1">
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th></th>
-<th>AssRe</th>
-<th>CountRe</th>
-<th>σ(CountRe)</th>
-<th>CountPr</th>
-<th>σ(CountPr)</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AssRe</th>
+<th data-quarto-table-cell-role="th">CountRe</th>
+<th data-quarto-table-cell-role="th">σ(CountRe)</th>
+<th data-quarto-table-cell-role="th">CountPr</th>
+<th data-quarto-table-cell-role="th">σ(CountPr)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>FairMOT</th>
+<td data-quarto-table-cell-role="th">FairMOT</td>
 <td>56.7</td>
 <td>27.1</td>
 <td>31.6</td>
@@ -1348,7 +1349,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>30.2</td>
 </tr>
 <tr class="even">
-<th>Sort</th>
+<td data-quarto-table-cell-role="th">Sort</td>
 <td>59.8</td>
 <td>35.4</td>
 <td>32.7</td>
@@ -1356,7 +1357,7 @@ X_k = X_{k-1} + \Delta_k(\lfloor \mu_{k-1} \rfloor) + \partial_X\Delta_k(\lfloor
 <td>30.2</td>
 </tr>
 <tr class="odd">
-<th>Ours</th>
+<td data-quarto-table-cell-role="th">Ours</td>
 <td>76.0</td>
 <td>47.9</td>
 <td>28.8</td>
@@ -1633,137 +1634,137 @@ p(z_n | z_{1:n-1}) = \int \int p(z_n | x_n) p(x_n | x_{n-1}) p(x_{n-1} | z_{1:n-
 </section>
 <section id="references" class="level1 unnumbered">
 <h1 class="unnumbered">References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-Arteta2016" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Arteta2016" class="csl-entry" role="listitem">
 Arteta, Carlos, Victor Lempitsky, and Andrew Zisserman. 2016. <span>“Counting in the Wild”</span> 9911 (October): 483–98. <a href="https://doi.org/10.1007/978-3-319-46478-7_30">https://doi.org/10.1007/978-3-319-46478-7_30</a>.
 </div>
-<div id="ref-bergmann2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-bergmann2019" class="csl-entry" role="listitem">
 Bergmann, P., T. Meinhardt, and L. Leal-Taixe. 2019. <span>“Tracking Without Bells and Whistles.”</span> In <em>2019 IEEE/CVF International Conference on Computer Vision (ICCV)</em>, 941–51. Los Alamitos, CA, USA: IEEE Computer Society. <a href="https://doi.org/10.1109/ICCV.2019.00103">https://doi.org/10.1109/ICCV.2019.00103</a>.
 </div>
-<div id="ref-bernardin2008" class="csl-entry" role="doc-biblioentry">
+<div id="ref-bernardin2008" class="csl-entry" role="listitem">
 Bernardin, Keni, and Rainer Stiefelhagen. 2008. <span>“Evaluating Multiple Object Tracking Performance: The CLEAR MOT Metrics.”</span> <em>EURASIP Journal on Image and Video Processing</em> 2008 (January). <a href="https://doi.org/10.1155/2008/246309">https://doi.org/10.1155/2008/246309</a>.
 </div>
-<div id="ref-Bewley2016" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Bewley2016" class="csl-entry" role="listitem">
 Bewley, Alex, Zongyuan Ge, Lionel Ott, Fabio Ramos, and Ben Upcroft. 2016. <span>“<span class="nocase">Simple online and realtime tracking</span>.”</span> In <em>Proceedings - International Conference on Image Processing, ICIP</em>, 2016-Augus:3464–68. <a href="https://doi.org/10.1109/ICIP.2016.7533003">https://doi.org/10.1109/ICIP.2016.7533003</a>.
 </div>
-<div id="ref-Bruge2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Bruge2018" class="csl-entry" role="listitem">
 Bruge, Antoine, Cristina Barreau, Jérémy Carlot, Hélène Collin, Clément Moreno, and Philippe Maison. 2018. <span>“<span class="nocase">Monitoring litter inputs from the Adour river (southwest France) to the marine environment</span>.”</span> <em>Journal of Marine Science and Engineering</em> 6 (1). <a href="https://doi.org/10.3390/jmse6010024">https://doi.org/10.3390/jmse6010024</a>.
 </div>
-<div id="ref-Caesar2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Caesar2020" class="csl-entry" role="listitem">
 Caesar, Holger, Varun Bankiti, Alex H Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu, Anush Krishnan, Yu Pan, Giancarlo Baldan, and Oscar Beijbom. 2020. <span>“<span class="nocase">Nuscenes: A multimodal dataset for autonomous driving</span>.”</span> In <em>Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition</em>, 11618–28. <a href="https://doi.org/10.1109/CVPR42600.2020.01164">https://doi.org/10.1109/CVPR42600.2020.01164</a>.
 </div>
-<div id="ref-Chattopadhyay" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Chattopadhyay" class="csl-entry" role="listitem">
 Chattopadhyay, Prithvijit, Ramakrishna Vedantam, Ramprasaath R Selvaraju, Dhruv Batra, and Devi Parikh. 2017. <span>“<span class="nocase">Counting everyday objects in everyday scenes</span>.”</span> In <em>Proceedings - 30th IEEE Conference on Computer Vision and Pattern Recognition, CVPR 2017</em>, 2017-Janua:4428–37. <a href="https://doi.org/10.1109/CVPR.2017.471">https://doi.org/10.1109/CVPR.2017.471</a>.
 </div>
-<div id="ref-Chu2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Chu2021" class="csl-entry" role="listitem">
 Chu, Peng, Jiang Wang, Quanzeng You, Haibin Ling, and Zicheng Liu. 2021. <span>“<span class="nocase">TransMOT: Spatial-Temporal Graph Transformer for Multiple Object Tracking</span>.”</span> <a href="http://arxiv.org/abs/2104.00194">http://arxiv.org/abs/2104.00194</a>.
 </div>
-<div id="ref-Ciaparrone2020b" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Ciaparrone2020b" class="csl-entry" role="listitem">
 Ciaparrone, Gioele, Francisco Luque Sánchez, Siham Tabik, Luigi Troiano, Roberto Tagliaferri, and Francisco Herrera. 2020. <span>“<span class="nocase">Deep learning in video multi-object tracking: A survey</span>.”</span> <em>Neurocomputing</em> 381: 61–88. <a href="https://doi.org/10.1016/j.neucom.2019.11.023">https://doi.org/10.1016/j.neucom.2019.11.023</a>.
 </div>
-<div id="ref-Dendorfer2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Dendorfer2020" class="csl-entry" role="listitem">
 Dendorfer, Patrick, Hamid Rezatofighi, Anton Milan, Javen Shi, Daniel Cremers, Ian Reid, Stefan Roth, Konrad Schindler, and Laura Leal-Taixé. 2020. <span>“<span class="nocase">MOT20: A benchmark for multi object tracking in crowded scenes</span>.”</span> <a href="https://arxiv.org/abs/2003.09003">https://arxiv.org/abs/2003.09003</a>.
 </div>
-<div id="ref-VanEmmerik2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-VanEmmerik2020" class="csl-entry" role="listitem">
 Emmerik, Tim van, and Anna Schwarz. 2020. <span>“Plastic Debris in Rivers.”</span> <em>WIREs Water</em> 7 (1): e1398. https://doi.org/<a href="https://doi.org/10.1002/wat2.1398">https://doi.org/10.1002/wat2.1398</a>.
 </div>
-<div id="ref-VanEmmerik2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-VanEmmerik2019" class="csl-entry" role="listitem">
 Emmerik, Tim van, Romain Tramoy, Caroline van Calcar, Soline Alligant, Robin Treilles, Bruno Tassin, and Johnny Gasperi. 2019. <span>“<span>Seine Plastic Debris Transport Tenfolded During Increased River Discharge</span>.”</span> <em>Frontiers in Marine Science</em> 6 (October): 1–7. <a href="https://doi.org/10.3389/fmars.2019.00642">https://doi.org/10.3389/fmars.2019.00642</a>.
 </div>
-<div id="ref-farneback2003two" class="csl-entry" role="doc-biblioentry">
+<div id="ref-farneback2003two" class="csl-entry" role="listitem">
 Farnebäck, G. 2003. <span>“Two-Frame Motion Estimation Based on Polynomial Expansion.”</span> In <em>Scandinavian Conference on Image Analysis</em>, 363–70. Springer.
 </div>
-<div id="ref-Fulton2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Fulton2018" class="csl-entry" role="listitem">
 Fulton, Michael, Jungseok Hong, Md Jahidul Islam, and Junaed Sattar. 2019. <span>“Robotic Detection of Marine Litter Using Deep Visual Detection Models.”</span> In <em>2019 International Conference on Robotics and Automation (ICRA)</em>, 5752–58. IEEE.
 </div>
-<div id="ref-gamage2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-gamage2020" class="csl-entry" role="listitem">
 Gamage, Thushari, and J. D. M. Senevirathna. 2020. <span>“Plastic Pollution in the Marine Environment.”</span> <em>Heliyon</em> 6 (August): e04709. <a href="https://doi.org/10.1016/j.heliyon.2020.e04709">https://doi.org/10.1016/j.heliyon.2020.e04709</a>.
 </div>
-<div id="ref-garcia2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-garcia2020" class="csl-entry" role="listitem">
 García-Fernández, Ángel F., Abu Sajana Rahmathullah, and Lennart Svensson. 2020. <span>“A Metric on the Space of Finite Sets of Trajectories for Evaluation of Multi-Target Tracking Algorithms.”</span> <em>IEEE Transactions on Signal Processing</em> 68: 3917–28. <a href="https://doi.org/10.1109/TSP.2020.3005309">https://doi.org/10.1109/TSP.2020.3005309</a>.
 </div>
-<div id="ref-gasperi2014" class="csl-entry" role="doc-biblioentry">
+<div id="ref-gasperi2014" class="csl-entry" role="listitem">
 Gasperi, Johnny, Rachid Dris, Tiffany Bonin, Vincent Rocher, and Bruno Tassin. 2014. <span>“Assessment of Floating Plastic Debris in Surface Water Along the Seine River.”</span> <em>Environmental Pollution</em> 195: 163–66. https://doi.org/<a href="https://doi.org/10.1016/j.envpol.2014.09.001">https://doi.org/10.1016/j.envpol.2014.09.001</a>.
 </div>
-<div id="ref-geyer2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-geyer2017" class="csl-entry" role="listitem">
 Geyer, Roland, Jenna Jambeck, and Kara Law. 2017. <span>“Production, Use, and Fate of All Plastics Ever Made.”</span> <em>Science Advances</em> 3 (July): e1700782. <a href="https://doi.org/10.1126/sciadv.1700782">https://doi.org/10.1126/sciadv.1700782</a>.
 </div>
-<div id="ref-gonzales2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-gonzales2021" class="csl-entry" role="listitem">
 González-Fernández, D., A. Cózar, G. Hanke, J. Viejo, C. Morales-Caselles, R. Bakiu, D. Barcelo, et al. 2021. <span>“Floating Macrolitter Leaked from Europe into the Ocean.”</span> <em>Nature Sustainability</em> 4: 474–83.
 </div>
-<div id="ref-jambeck2015" class="csl-entry" role="doc-biblioentry">
+<div id="ref-jambeck2015" class="csl-entry" role="listitem">
 Jambeck, Jenna, Roland Geyer, Chris Wilcox, Theodore Siegler, Miriam Perryman, Anthony Andrady, Ramani Narayan, and Kara Law. 2015. <span>“Marine Pollution. Plastic Waste Inputs from Land into the Ocean.”</span> <em>Science (New York, N.Y.)</em> 347 (February): 768–71. <a href="https://doi.org/10.1126/science.1260352">https://doi.org/10.1126/science.1260352</a>.
 </div>
-<div id="ref-kuhn" class="csl-entry" role="doc-biblioentry">
+<div id="ref-kuhn" class="csl-entry" role="listitem">
 Kuhn, H. W. 1955. <span>“The Hungarian Method for the Assignment Problem.”</span> <em>Naval Research Logistics Quarterly</em> 2 (1-2): 83–97. https://doi.org/<a href="https://doi.org/10.1002/nav.3800020109">https://doi.org/10.1002/nav.3800020109</a>.
 </div>
-<div id="ref-Law" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Law" class="csl-entry" role="listitem">
 Law, Hei, and Jia Deng. 2018. <span>“CornerNet: Detecting Objects as Paired Keypoints.”</span> In <em>Computer Vision - <span>ECCV</span> 2018 - 15th European Conference, Munich, Germany, September 8-14, 2018, Proceedings, Part <span>XIV</span></em>, edited by Vittorio Ferrari, Martial Hebert, Cristian Sminchisescu, and Yair Weiss, 11218:765–81. Lecture Notes in Computer Science. Springer. <a href="https://doi.org/10.1007/978-3-030-01264-9\_45">https://doi.org/10.1007/978-3-030-01264-9\_45</a>.
 </div>
-<div id="ref-vanlieshout2020automated" class="csl-entry" role="doc-biblioentry">
+<div id="ref-vanlieshout2020automated" class="csl-entry" role="listitem">
 Lieshout, Colin van, Kees van Oeveren, Tim van Emmerik, and Eric Postma. 2020. <span>“<span class="nocase">Automated River Plastic Monitoring Using Deep Learning and Cameras</span>.”</span> <em>Earth and Space Science</em> 7 (8): e2019EA000960. <a href="https://doi.org/10.1029/2019EA000960">https://doi.org/10.1029/2019EA000960</a>.
 </div>
-<div id="ref-luiten2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-luiten2020" class="csl-entry" role="listitem">
 Luiten, Jonathon, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixé, and Bastian Leibe. 2021. <span>“Hota: A Higher Order Metric for Evaluating Multi-Object Tracking.”</span> <em>International Journal of Computer Vision</em> 129 (2): 548–78.
 </div>
-<div id="ref-luo2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-luo2021" class="csl-entry" role="listitem">
 Luo, Wenhan, Junliang Xing, Anton Milan, Xiaoqin Zhang, Wei Liu, and Tae-Kyun Kim. 2021. <span>“Multiple Object Tracking: A Literature Review.”</span> <em>Artificial Intelligence</em> 293: 103448. https://doi.org/<a href="https://doi.org/10.1016/j.artint.2020.103448">https://doi.org/10.1016/j.artint.2020.103448</a>.
 </div>
-<div id="ref-mahler2003" class="csl-entry" role="doc-biblioentry">
+<div id="ref-mahler2003" class="csl-entry" role="listitem">
 Mahler, R. P. S. 2003. <span>“Multitarget Bayes Filtering via First-Order Multitarget Moments.”</span> <em>IEEE Transactions on Aerospace and Electronic Systems</em> 39 (4): 1152–78. <a href="https://doi.org/10.1109/TAES.2003.1261119">https://doi.org/10.1109/TAES.2003.1261119</a>.
 </div>
-<div id="ref-Miao2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Miao2019" class="csl-entry" role="listitem">
 Miao, Yunqi, Jungong Han, Yongsheng Gao, and Baochang Zhang. 2019. <span>“<span class="nocase">ST-CNN: Spatial-Temporal Convolutional Neural Network for crowd counting in videos</span>.”</span> <em>Pattern Recognition Letters</em> 125 (July): 113–18. <a href="https://doi.org/10.1016/j.patrec.2019.04.012">https://doi.org/10.1016/j.patrec.2019.04.012</a>.
 </div>
-<div id="ref-moritt2014" class="csl-entry" role="doc-biblioentry">
+<div id="ref-moritt2014" class="csl-entry" role="listitem">
 Morritt, David, Paris V. Stefanoudis, Dave Pearce, Oliver A. Crimmen, and Paul F. Clark. 2014. <span>“Plastic in the Thames: A River Runs Through It.”</span> <em>Marine Pollution Bulletin</em> 78 (1): 196–200. https://doi.org/<a href="https://doi.org/10.1016/j.marpolbul.2013.10.035">https://doi.org/10.1016/j.marpolbul.2013.10.035</a>.
 </div>
-<div id="ref-paragios2006" class="csl-entry" role="doc-biblioentry">
+<div id="ref-paragios2006" class="csl-entry" role="listitem">
 Paragios, Nikos, Yunmei Chen, and Olivier D Faugeras. 2006. <em>Handbook of Mathematical Models in Computer Vision</em>. Springer Science &amp; Business Media.
 </div>
-<div id="ref-Proenca2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Proenca2020" class="csl-entry" role="listitem">
 Proença, Pedro F, and Pedro Simões. 2020. <span>“<span class="nocase">TACO: Trash Annotations in Context for Litter Detection</span>.”</span> <a href="http://tacodataset.org/ http://arxiv.org/abs/2003.06975">http://tacodataset.org/ http://arxiv.org/abs/2003.06975</a>.
 </div>
-<div id="ref-ren2016faster" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ren2016faster" class="csl-entry" role="listitem">
 Ren, Shaoqing, Kaiming He, Ross Girshick, and Jian Sun. 2015. <span>“Faster r-CNN: Towards Real-Time Object Detection with Region Proposal Networks.”</span> In <em>Proceedings of the 28th International Conference on Neural Information Processing Systems - Volume 1</em>, 91–99. NIPS’15. Cambridge, MA, USA: MIT Press.
 </div>
-<div id="ref-RistaniSZCT16" class="csl-entry" role="doc-biblioentry">
+<div id="ref-RistaniSZCT16" class="csl-entry" role="listitem">
 Ristani, Ergys, Francesco Solera, Roger Zou, Rita Cucchiara, and Carlo Tomasi. 2016. <span>“Performance Measures and a Data Set for Multi-Target, Multi-Camera Tracking.”</span> In <em>European Conference on Computer Vision</em>, 17–35. Springer.
 </div>
-<div id="ref-rochman2016" class="csl-entry" role="doc-biblioentry">
+<div id="ref-rochman2016" class="csl-entry" role="listitem">
 Rochman, Chelsea, Anthony Andrady, Sarah Dudas, Joan Fabres, François Galgani, Denise lead, Valeria Hidalgo-Ruz, et al. 2016. <span>“Sources, Fate and Effects of Microplastics in the Marine Environment: Part 2 of a Global Assessment,”</span> December.
 </div>
-<div id="ref-sarkka2013bayesian" class="csl-entry" role="doc-biblioentry">
+<div id="ref-sarkka2013bayesian" class="csl-entry" role="listitem">
 Särkkä, S. 2013. <em>Bayesian Filtering and Smoothing</em>. New York, NY, USA: Cambridge University Press.
 </div>
-<div id="ref-Wang2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Wang2021" class="csl-entry" role="listitem">
 Wang, Yongxin, Kris Kitani, and Xinshuo Weng. 2021. <span>“Joint Object Detection and Multi-Object Tracking with Graph Neural Networks,”</span> May.
 </div>
-<div id="ref-welden2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-welden2020" class="csl-entry" role="listitem">
 Welden, Natalie. 2020. <span>“The Environmental Impacts of Plastic Pollution,”</span> January, 195–222. <a href="https://doi.org/10.1016/B978-0-12-817880-5.00008-6">https://doi.org/10.1016/B978-0-12-817880-5.00008-6</a>.
 </div>
-<div id="ref-Wojke2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Wojke2018" class="csl-entry" role="listitem">
 Wojke, Nicolai, Alex Bewley, and Dietrich Paulus. 2018. <span>“<span class="nocase">Simple online and realtime tracking with a deep association metric</span>.”</span> In <em>Proceedings - International Conference on Image Processing, ICIP</em>, 2017-Septe:3645–49. <a href="https://doi.org/10.1109/ICIP.2017.8296962">https://doi.org/10.1109/ICIP.2017.8296962</a>.
 </div>
-<div id="ref-Wolf2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Wolf2020" class="csl-entry" role="listitem">
 Wolf, Mattis, Katelijn van den Berg, Shungudzemwoyo Pascal Garaba, Nina Gnann, Klaus Sattler, Frederic Theodor Stahl, and Oliver Zielinski. 2020. <span>“<span class="nocase">Machine learning for aquatic plastic litter detection, classification and quantification (APLASTIC–Q)</span>.”</span> <em>Environmental Research Letters</em>. <a href="https://doi.org/10.1088/1748-9326/abbd01">https://doi.org/10.1088/1748-9326/abbd01</a>.
 </div>
-<div id="ref-wu2020fast" class="csl-entry" role="doc-biblioentry">
+<div id="ref-wu2020fast" class="csl-entry" role="listitem">
 Wu, Xingjiao, Baohan Xu, Yingbin Zheng, Hao Ye, Jing Yang, and Liang He. 2020. <span>“Fast Video Crowd Counting with a Temporal Aware Network.”</span> <em>Neurocomputing</em> 403: 13–20. https://doi.org/<a href="https://doi.org/10.1016/j.neucom.2020.04.071">https://doi.org/10.1016/j.neucom.2020.04.071</a>.
 </div>
-<div id="ref-Xiong2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Xiong2017" class="csl-entry" role="listitem">
 Xiong, Feng, Xingjian Shi, and Dit-Yan Yeung. 2017. <span>“Spatiotemporal Modeling for Crowd Counting in Videos.”</span> In <em>2017 IEEE International Conference on Computer Vision (ICCV)</em>, 5161–69. <a href="https://doi.org/10.1109/ICCV.2017.551">https://doi.org/10.1109/ICCV.2017.551</a>.
 </div>
-<div id="ref-fisher2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-fisher2017" class="csl-entry" role="listitem">
 Yu, Fisher, Dequan Wang, Evan Shelhamer, and Trevor Darrell. 2018. <span>“Deep Layer Aggregation.”</span> In <em>2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 2403–12. <a href="https://doi.org/10.1109/CVPR.2018.00255">https://doi.org/10.1109/CVPR.2018.00255</a>.
 </div>
-<div id="ref-Zhanga" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Zhanga" class="csl-entry" role="listitem">
 Zhang, Yifu, Chunyu Wang, Xinggang Wang, Wenjun Zeng, and Wenyu Liu. 2021. <span>“Fairmot: On the Fairness of Detection and Re-Identification in Multiple Object Tracking.”</span> <em>International Journal of Computer Vision</em>, 1–19.
 </div>
-<div id="ref-zhou2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-zhou2020" class="csl-entry" role="listitem">
 Zhou, Xingyi, Vladlen Koltun, and Philipp Krähenbühl. 2020. <span>“Tracking Objects as Points,”</span> October, 474–90. <a href="https://doi.org/10.1007/978-3-030-58548-8_28">https://doi.org/10.1007/978-3-030-58548-8_28</a>.
 </div>
-<div id="ref-Zhou2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Zhou2019" class="csl-entry" role="listitem">
 Zhou, Xingyi, Dequan Wang, and Philipp Krähenbühl. 2019. <span>“<span class="nocase">Objects as points</span>.”</span> arXiv. <a href="http://arxiv.org/abs/1904.07850">http://arxiv.org/abs/1904.07850</a>.
 </div>
 </div>
@@ -1772,8 +1773,8 @@ Zhou, Xingyi, Dequan Wang, and Philipp Krähenbühl. 2019. <span>“<span class=
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@article{chagneux2023,
-  author = {Mathis Chagneux and Sylvain Le Corff and Pierre Gloaguen and
-    Charles Ollion and Océane Lepâtre and Antoine Bruge},
+  author = {Chagneux, Mathis and LeCorff, Sylvain and Gloaguen, Pierre
+    and Ollion, Charles and Lepâtre, Océane and Bruge, Antoine},
   publisher = {Société Française de Statistique},
   title = {Macrolitter Video Counting on Riverbanks Using State Space
     Models and Moving Cameras},
@@ -1803,8 +1804,8 @@ Zhou, Xingyi, Dequan Wang, and Philipp Krähenbühl. 2019. <span>“<span class=
     detection capabilities. A precise error decomposition allows clear
     analysis and highlights the remaining challenges.}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chagneux2023" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Mathis Chagneux, Sylvain Le Corff, Pierre Gloaguen, Charles Ollion,
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chagneux2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Chagneux, Mathis, Sylvain LeCorff, Pierre Gloaguen, Charles Ollion,
 Océane Lepâtre, and Antoine Bruge. 23AD. <span>“Macrolitter Video
 Counting on Riverbanks Using State Space Models and Moving Cameras
 .”</span> <em>Computo</em>, February. <a href="https://doi.org/10.57750/845m-f805">https://doi.org/10.57750/845m-f805</a>.
@@ -2084,7 +2085,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
