@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.228">
+<meta name="generator" content="quarto-1.3.242">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -54,43 +54,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -335,7 +305,7 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">February 26, 2023</p>
+        <p class="date-modified">March 5, 2023</p>
       </div>
     </div>
       
@@ -612,7 +582,7 @@ Tracking...</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tracking with SORT...
 --- Begin SORT internal logs
-Total Tracking took: 0.123 seconds for 360 frames or 2934.8 FPS
+Total Tracking took: 0.170 seconds for 360 frames or 2117.8 FPS
 --- End</code></pre>
 </div>
 </div>
@@ -1779,7 +1749,7 @@ Zhou, Xingyi, Dequan Wang, and Philipp Krähenbühl. 2019. <span>“<span class=
   title = {Macrolitter Video Counting on Riverbanks Using State Space
     Models and Moving Cameras},
   journal = {Computo},
-  date = {23-02-16},
+  date = {2023-02-16},
   url = {https://computo.sfds.asso.fr/published-202301-chagneux-macrolitter},
   doi = {10.57750/845m-f805},
   issn = {2824-7795},
@@ -1806,7 +1776,7 @@ Zhou, Xingyi, Dequan Wang, and Philipp Krähenbühl. 2019. <span>“<span class=
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chagneux2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Chagneux, Mathis, Sylvain LeCorff, Pierre Gloaguen, Charles Ollion,
-Océane Lepâtre, and Antoine Bruge. 23AD. <span>“Macrolitter Video
+Océane Lepâtre, and Antoine Bruge. 2023. <span>“Macrolitter Video
 Counting on Riverbanks Using State Space Models and Moving Cameras
 .”</span> <em>Computo</em>, February. <a href="https://doi.org/10.57750/845m-f805">https://doi.org/10.57750/845m-f805</a>.
 </div></div></section></div></main>
@@ -1838,9 +1808,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
