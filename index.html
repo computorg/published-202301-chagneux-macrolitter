@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.376">
+<meta name="generator" content="quarto-1.4.395">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -84,7 +84,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="published-202301-chagneux-macrolitter_files/libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="published-202301-chagneux-macrolitter_files/libs/clipboard/clipboard.min.js"></script>
 <script src="published-202301-chagneux-macrolitter_files/libs/quarto-html/quarto.js"></script>
 <script src="published-202301-chagneux-macrolitter_files/libs/quarto-html/popper.min.js"></script>
 <script src="published-202301-chagneux-macrolitter_files/libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +112,7 @@ background: #034E79;
       }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
@@ -311,7 +311,7 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 24, 2023</p>
+        <p class="date-modified">October 1, 2023</p>
       </div>
     </div>
       
@@ -428,6 +428,7 @@ ISSN 2824-7795</p>
 
 
 
+
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>Litter pollution concerns every part of the globe. Each year, almost ten thousand million tons of plastic waste is generated, among which 80% ends up in landfills or in nature (<span class="citation" data-cites="geyer2017">Geyer, Jambeck, and Law (<a href="#ref-geyer2017" role="doc-biblioref">2017</a>)</span>), notably threatening all of the world’s oceans, seas and aquatic environments (<span class="citation" data-cites="welden2020">Welden (<a href="#ref-welden2020" role="doc-biblioref">2020</a>)</span>, <span class="citation" data-cites="gamage2020">Gamage and Senevirathna (<a href="#ref-gamage2020" role="doc-biblioref">2020</a>)</span>). Plastic pollution is known to already impact more than 3763 marine species worldwide (see <a href="https://litterbase.awi.de/">this</a> detailed analysis) with risk of proliferation through the whole food chain. This accumulation of waste is the endpoint of the largely misunderstood path of trash, mainly coming from land-based sources (<span class="citation" data-cites="rochman2016">Rochman et al. (<a href="#ref-rochman2016" role="doc-biblioref">2016</a>)</span>), yet rivers have been identified as a major pathway for the introduction of waste into marine environments (<span class="citation" data-cites="jambeck2015">Jambeck et al. (<a href="#ref-jambeck2015" role="doc-biblioref">2015</a>)</span>). Therefore, field data on rivers and monitoring are strongly needed to assess the impact of measures that can be taken. The analysis of such field data over time is pivotal to understand the efficiency of the actions implemented such as choosing zero-waste alternatives to plastic, designing new products to be long-lasting or reusable, introducing policies to reduce over-packing.</p>
@@ -532,7 +533,7 @@ Figure&nbsp;1: <em>Our method</em>: one object (red dot) is correctly detected a
 </div>
 </div>
 </div>
-<div id="3b2f39e0" class="cell" data-execution_count="2">
+<div id="f88304a2" class="cell" data-execution_count="2">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Tracker with SORT </span></span>
@@ -585,7 +586,7 @@ Figure&nbsp;1: <em>Our method</em>: one object (red dot) is correctly detected a
 <div class="cell-output cell-output-stdout">
 <pre><code>Tracking with SORT...
 --- Begin SORT internal logs
-Total Tracking took: 0.088 seconds for 360 frames or 4096.7 FPS
+Total Tracking took: 0.097 seconds for 360 frames or 3719.0 FPS
 --- End</code></pre>
 </div>
 </div>
@@ -647,7 +648,7 @@ Figure&nbsp;2: <em>SORT</em>: the resulting count is also 2, but both counts ari
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="bounding-box-annotation"><span class="header-section-number">3.1.2</span> Bounding box annotation</h3>
 <p>For object detection applications, the images are annotated using a custom online platform where each object is located using a bounding box. In this work, we focus only on litter counting without classification, however the annotated objects are already classified into specific categories which are described in <a href="#fig-trash-categories-image" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>A few samples are depicted below:</p>
-<div id="e251083e" class="cell" data-execution_count="4">
+<div id="e90551f3" class="cell" data-execution_count="4">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image, ExifTags</span>
@@ -717,139 +718,49 @@ index created!
 15 images loaded</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-2.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-3.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-3.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-4.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-4.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-5.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-5.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-5" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-6.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-5" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-6.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-6" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-7.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-6" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-7.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-7" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-8.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-7" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-8.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-8" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-9.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-8" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-9.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-9" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-10.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-9" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-10.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-10" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-11.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-10" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-11.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-11" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-12.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-11" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-12.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-12" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-13.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-12" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-13.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-13" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-14.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-13" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-14.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-14" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-15.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-14" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-15.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-15" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-16.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-15" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-5-output-16.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1033,7 +944,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 <section id="detection-1" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="detection-1"><span class="header-section-number">6.1</span> Detection</h2>
 <p>In the following section, we present the performance of the trained detector. Having annotated all frames of the evaluation videos, we directly compute <span class="math inline">\mathsf{DetRe}</span> and <span class="math inline">\mathsf{DetPr}</span> on those instead of a test split of the image dataset used for training. This allows realistic assessment of the detection quality of our system on true videos that may include blurry frames or artifacts caused by strong motion. We observe low <span class="math inline">\mathsf{DetRe}</span>, suggesting that objects are only captured on a fraction of the frames they appear on. To better focus on count performance in the next sections, we remove segments that do not generate any correct detection: performance on the remaining footage is increased and given by <span class="math inline">\mathsf{DetRe}^{*}</span> and <span class="math inline">\mathsf{DetPr}^{*}</span>.</p>
-<div id="c40c3d31" class="cell" data-execution_count="5">
+<div id="c6695821" class="cell" data-execution_count="5">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
@@ -1146,7 +1057,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 <p>To fairly compare the three solutions, we calibrate the hyperparameters of our postprocessing block on the validation split and keep the values that minimize the overall count error <span class="math inline">\mathsf{\hat{N}}</span> for each of them separately (see <a href="#sec-tau_kappa_appendix" class="quarto-xref">Section&nbsp;8.3.2</a> for more information). All methods are found to work optimally at <span class="math inline">\kappa = 7</span>, but our solution requires <span class="math inline">\tau = 8</span> instead of <span class="math inline">\tau = 9</span> for other solutions: this lower level of thresholding suggests that raw output of our tracking system is more reliable.</p>
 <p>We report results using the count-related tracking metrics and count decompositions defined in the previous section. To provide a clear but thorough summary of the performance, we report <span class="math inline">\mathsf{AssRe}</span>, <span class="math inline">\mathsf{CountRe}</span> and <span class="math inline">\mathsf{CountPR}</span> as tabled values (the first gives a simple overview of the quality of the predicted tacks while the latter two concisely summarise the count performance). For a more detailed visualisation of the different types of errors, we plot the count error decomposition for all sequences in a separate graph. Note that across all videos and all methods, we find <span class="math inline">\mathsf{AssPr}</span> between 98.6 and 99.2 which shows that this application context is unconcerned with tracks spanning multiple ground truth objects, therefore we do not conduct a more detailed interpretation of <span class="math inline">\mathsf{AssPr}</span> values.</p>
 <p>First, the higher values of AssRe confirm the robustness of our solution in assigning consistent tracks to individual objects. This is directly reflected into the count precision performance - with an overall value of <span class="math inline">\mathsf{CountPR}</span> 17.6 points higher than the next best method (SORT) - or even more so in the complete disappearance of orange (redundant) counts in the graph. A key aspect is that these improvements are not counteracted by a lower <span class="math inline">\mathsf{CountRe}</span>: on the contrary, our tracker, which is more stable, also captures more object (albeit still missing most of them, with a <span class="math inline">\mathsf{CountRe}</span> below 50%). Note finally, that the strongest improvements are obtained for sequence 2 which is also the part with the strongest motion.</p>
-<div id="58a8bf1d" class="cell" data-execution_count="6">
+<div id="1e65fbd4" class="cell" data-execution_count="6">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_summary(results, index_start<span class="op">=</span><span class="dv">0</span>, index_stop<span class="op">=-</span><span class="dv">1</span>):</span>
@@ -1288,7 +1199,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="f6f83c07" class="cell" data-execution_count="7">
+<div id="86364a5b" class="cell" data-execution_count="7">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results_S2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1339,7 +1250,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="6908ab35" class="cell" data-execution_count="8">
+<div id="f1c3326c" class="cell" data-execution_count="8">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>results_S3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1390,7 +1301,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="d648b192" class="cell" data-execution_count="9">
+<div id="f1e30814" class="cell" data-execution_count="9">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>results_All</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1443,7 +1354,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 <section id="detailed-results-on-individual-segments" class="level4" data-number="6.2.0.1">
 <h4 data-number="6.2.0.1" class="anchored" data-anchor-id="detailed-results-on-individual-segments"><span class="header-section-number">6.2.0.1</span> Detailed results on individual segments</h4>
-<div id="32042110" class="cell" data-execution_count="10">
+<div id="b111804d" class="cell" data-execution_count="10">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>set_split(<span class="st">'test'</span>)</span>
@@ -1457,13 +1368,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    results.plot(ax <span class="op">=</span> ax, kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span>[<span class="st">'orange'</span>, <span class="st">'red'</span>, <span class="st">'black'</span>], title<span class="op">=</span>title, xlabel<span class="op">=</span><span class="st">'Sequence nb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-16" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-11-output-1.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-16" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1552,7 +1457,7 @@ Figure&nbsp;5: Aerial view of the three river segments of the evaluation materia
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="sec-tau_kappa_appendix"><span class="header-section-number">8.3.2</span> Influence of <span class="math inline">\tau</span> and <span class="math inline">\kappa</span></h3>
 <p>An understanding of <span class="math inline">\kappa</span>, <span class="math inline">\tau</span> and <span class="math inline">\nu</span> can be stated as follows. For any track, given a value for <span class="math inline">\kappa</span> and <span class="math inline">\nu</span>, an observation at time <span class="math inline">n</span> is only kept if there are also <span class="math inline">\nu \cdot \kappa</span> observations in the temporal window of size <span class="math inline">\kappa</span> that surrounds <span class="math inline">n</span> (windows are centered around <span class="math inline">n</span> except at the start and end of the track). The track is only counted if the remaining number of observations is strictly higher than <span class="math inline">\tau</span>. At a given <span class="math inline">\nu &gt; 0.5</span>, <span class="math inline">\kappa</span> and <span class="math inline">\tau</span> should ideally be chosen to jointly decrease <span class="math inline">\mathsf{\hat{N}_{false}}</span> and <span class="math inline">\mathsf{\hat{N}_{red}}</span> as much as possible without increasing <span class="math inline">\mathsf{\hat{N}_{mis}}</span> (true objects become uncounted if tracks are discarded too easily).</p>
 <p>In the following code cell, we plot the error decomposition of the counts for several values of <span class="math inline">\kappa</span> and <span class="math inline">\tau</span> with <span class="math inline">\nu=0.6</span> for the outputs of the three different trackers. We choose <span class="math inline">\nu = 0.7</span> and compute the optimal point as the one which minimizes the overall count error <span class="math inline">\mathsf{\hat{N}} (= \mathsf{\hat{N}_{mis}} + \mathsf{\hat{N}_{red}} + \mathsf{\hat{N}_{false}})</span>.</p>
-<div id="0ab51c48" class="cell" data-execution_count="11">
+<div id="aedadabc" class="cell" data-execution_count="11">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>set_split(<span class="st">'val'</span>)</span>
@@ -1635,31 +1540,13 @@ Best parameters for SORT: (kappa, tau) = (7, 9)
 Best parameters for Ours: (kappa, tau) = (7, 8)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-17" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-2.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-17" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-2.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-18" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-3.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-18" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-3.svg" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-19" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div>
-<img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-4.svg" id="fig-539a35d47e664c97a50115a146a7f1bd-19" class="img-fluid figure-img">
-</div>
-</figure>
-</div>
+<p><img src="published-202301-chagneux-macrolitter_files/figure-html/cell-12-output-4.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -2090,15 +1977,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
         for (let i = 0; i < 2; i++) {
           container.appendChild(note.children[i].cloneNode(true));
         }
+        typesetMath(container);
         return container.innerHTML
       } else {
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -2107,6 +2017,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
@@ -2149,6 +2060,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -2224,7 +2158,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -2305,12 +2238,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
