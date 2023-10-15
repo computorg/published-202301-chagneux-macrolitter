@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.404">
+<meta name="generator" content="quarto-1.4.422">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -311,7 +311,7 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">October 8, 2023</p>
+        <p class="date-modified">October 15, 2023</p>
       </div>
     </div>
       
@@ -533,7 +533,7 @@ Figure&nbsp;1: <em>Our method</em>: one object (red dot) is correctly detected a
 </div>
 </div>
 </div>
-<div id="46255c42" class="cell" data-execution_count="2">
+<div id="22d840ed" class="cell" data-execution_count="2">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Tracker with SORT </span></span>
@@ -586,7 +586,7 @@ Figure&nbsp;1: <em>Our method</em>: one object (red dot) is correctly detected a
 <div class="cell-output cell-output-stdout">
 <pre><code>Tracking with SORT...
 --- Begin SORT internal logs
-Total Tracking took: 0.145 seconds for 360 frames or 2487.8 FPS
+Total Tracking took: 0.125 seconds for 360 frames or 2886.1 FPS
 --- End</code></pre>
 </div>
 </div>
@@ -648,7 +648,7 @@ Figure&nbsp;2: <em>SORT</em>: the resulting count is also 2, but both counts ari
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="bounding-box-annotation"><span class="header-section-number">3.1.2</span> Bounding box annotation</h3>
 <p>For object detection applications, the images are annotated using a custom online platform where each object is located using a bounding box. In this work, we focus only on litter counting without classification, however the annotated objects are already classified into specific categories which are described in <a href="#fig-trash-categories-image" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>A few samples are depicted below:</p>
-<div id="093e09fa" class="cell" data-execution_count="4">
+<div id="68f58588" class="cell" data-execution_count="4">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image, ExifTags</span>
@@ -944,7 +944,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 <section id="detection-1" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="detection-1"><span class="header-section-number">6.1</span> Detection</h2>
 <p>In the following section, we present the performance of the trained detector. Having annotated all frames of the evaluation videos, we directly compute <span class="math inline">\mathsf{DetRe}</span> and <span class="math inline">\mathsf{DetPr}</span> on those instead of a test split of the image dataset used for training. This allows realistic assessment of the detection quality of our system on true videos that may include blurry frames or artifacts caused by strong motion. We observe low <span class="math inline">\mathsf{DetRe}</span>, suggesting that objects are only captured on a fraction of the frames they appear on. To better focus on count performance in the next sections, we remove segments that do not generate any correct detection: performance on the remaining footage is increased and given by <span class="math inline">\mathsf{DetRe}^{*}</span> and <span class="math inline">\mathsf{DetPr}^{*}</span>.</p>
-<div id="00e43806" class="cell" data-execution_count="5">
+<div id="89e5af2c" class="cell" data-execution_count="5">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
@@ -1057,7 +1057,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 <p>To fairly compare the three solutions, we calibrate the hyperparameters of our postprocessing block on the validation split and keep the values that minimize the overall count error <span class="math inline">\mathsf{\hat{N}}</span> for each of them separately (see <a href="#sec-tau_kappa_appendix" class="quarto-xref">Section&nbsp;8.3.2</a> for more information). All methods are found to work optimally at <span class="math inline">\kappa = 7</span>, but our solution requires <span class="math inline">\tau = 8</span> instead of <span class="math inline">\tau = 9</span> for other solutions: this lower level of thresholding suggests that raw output of our tracking system is more reliable.</p>
 <p>We report results using the count-related tracking metrics and count decompositions defined in the previous section. To provide a clear but thorough summary of the performance, we report <span class="math inline">\mathsf{AssRe}</span>, <span class="math inline">\mathsf{CountRe}</span> and <span class="math inline">\mathsf{CountPR}</span> as tabled values (the first gives a simple overview of the quality of the predicted tacks while the latter two concisely summarise the count performance). For a more detailed visualisation of the different types of errors, we plot the count error decomposition for all sequences in a separate graph. Note that across all videos and all methods, we find <span class="math inline">\mathsf{AssPr}</span> between 98.6 and 99.2 which shows that this application context is unconcerned with tracks spanning multiple ground truth objects, therefore we do not conduct a more detailed interpretation of <span class="math inline">\mathsf{AssPr}</span> values.</p>
 <p>First, the higher values of AssRe confirm the robustness of our solution in assigning consistent tracks to individual objects. This is directly reflected into the count precision performance - with an overall value of <span class="math inline">\mathsf{CountPR}</span> 17.6 points higher than the next best method (SORT) - or even more so in the complete disappearance of orange (redundant) counts in the graph. A key aspect is that these improvements are not counteracted by a lower <span class="math inline">\mathsf{CountRe}</span>: on the contrary, our tracker, which is more stable, also captures more object (albeit still missing most of them, with a <span class="math inline">\mathsf{CountRe}</span> below 50%). Note finally, that the strongest improvements are obtained for sequence 2 which is also the part with the strongest motion.</p>
-<div id="df259b9a" class="cell" data-execution_count="6">
+<div id="640e10ea" class="cell" data-execution_count="6">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_summary(results, index_start<span class="op">=</span><span class="dv">0</span>, index_stop<span class="op">=-</span><span class="dv">1</span>):</span>
@@ -1199,7 +1199,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="9b7dd0bd" class="cell" data-execution_count="7">
+<div id="5aef2a5f" class="cell" data-execution_count="7">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results_S2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1250,7 +1250,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="a2b74735" class="cell" data-execution_count="8">
+<div id="1dbff7f2" class="cell" data-execution_count="8">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>results_S3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1301,7 +1301,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 </div>
 </div>
-<div id="d267f417" class="cell" data-execution_count="9">
+<div id="2038f439" class="cell" data-execution_count="9">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>results_All</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1354,7 +1354,7 @@ Figure&nbsp;3: Visual representation of the tracking pipeline.
 </div>
 <section id="detailed-results-on-individual-segments" class="level4" data-number="6.2.0.1">
 <h4 data-number="6.2.0.1" class="anchored" data-anchor-id="detailed-results-on-individual-segments"><span class="header-section-number">6.2.0.1</span> Detailed results on individual segments</h4>
-<div id="2b738f29" class="cell" data-execution_count="10">
+<div id="5d5e01d2" class="cell" data-execution_count="10">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>set_split(<span class="st">'test'</span>)</span>
@@ -1457,7 +1457,7 @@ Figure&nbsp;5: Aerial view of the three river segments of the evaluation materia
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="sec-tau_kappa_appendix"><span class="header-section-number">8.3.2</span> Influence of <span class="math inline">\tau</span> and <span class="math inline">\kappa</span></h3>
 <p>An understanding of <span class="math inline">\kappa</span>, <span class="math inline">\tau</span> and <span class="math inline">\nu</span> can be stated as follows. For any track, given a value for <span class="math inline">\kappa</span> and <span class="math inline">\nu</span>, an observation at time <span class="math inline">n</span> is only kept if there are also <span class="math inline">\nu \cdot \kappa</span> observations in the temporal window of size <span class="math inline">\kappa</span> that surrounds <span class="math inline">n</span> (windows are centered around <span class="math inline">n</span> except at the start and end of the track). The track is only counted if the remaining number of observations is strictly higher than <span class="math inline">\tau</span>. At a given <span class="math inline">\nu &gt; 0.5</span>, <span class="math inline">\kappa</span> and <span class="math inline">\tau</span> should ideally be chosen to jointly decrease <span class="math inline">\mathsf{\hat{N}_{false}}</span> and <span class="math inline">\mathsf{\hat{N}_{red}}</span> as much as possible without increasing <span class="math inline">\mathsf{\hat{N}_{mis}}</span> (true objects become uncounted if tracks are discarded too easily).</p>
 <p>In the following code cell, we plot the error decomposition of the counts for several values of <span class="math inline">\kappa</span> and <span class="math inline">\tau</span> with <span class="math inline">\nu=0.6</span> for the outputs of the three different trackers. We choose <span class="math inline">\nu = 0.7</span> and compute the optimal point as the one which minimizes the overall count error <span class="math inline">\mathsf{\hat{N}} (= \mathsf{\hat{N}_{mis}} + \mathsf{\hat{N}_{red}} + \mathsf{\hat{N}_{false}})</span>.</p>
-<div id="83e14113" class="cell" data-execution_count="11">
+<div id="48925f70" class="cell" data-execution_count="11">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>set_split(<span class="st">'val'</span>)</span>
