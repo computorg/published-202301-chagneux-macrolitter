@@ -1,5 +1,8 @@
 # Macrolitter video counting on riverbanks using state space models and moving cameras
 
+[![build and publish](https://github.com/computorg/published-202301-chagneux-macrolitter/actions/workflows/build.yml/badge.svg)](https://github.com/computorg/published-202301-chagneux-macrolitter/actions/workflows/build.yml)
+
+Authors:
 
 - [Mathis Chagneux](https://www.linkedin.com/in/mathis-chagneux-140245158/?originalSubdomain=fr), Telecom Paris, LTCI
 - Sylvain Le Corff, Sorbonne Université, UMR 8001 (LPSM)
@@ -8,12 +11,8 @@
 - Océane Lepâtre, Surfrider Foundation Europe
 - Antoine Bruge, Surfrider Foundation Europe
 
-
-
-[![build status](https://github.com/computorg/published-202301-chagneux-macrolitter/workflows/build/badge.svg)](https://github.com/computorg/published-202301-chagneux-macrolitter/)
-[![](https://img.shields.io/github/last-commit/computorg/published-202301-chagneux-macrolitter.svg)](https://github.com/computorg/published-202301-chagneux-macrolitter/commits/main)
+[![DOI](https://img.shields.io/badge/DOI-10.57750%2F845m--f805-034E79.svg)](https://doi.org/10.57750/845m-f805)
 [![HTML](https://img.shields.io/badge/article-HTML-034E79)](https://computorg.github.io/published-202301-chagneux-macrolitter/)
-[![10.57750/845m-f805](https://img.shields.io/badge/DOI-10.57750%2F845m--f805-034E79.svg)](https://doi.org/10.57750/845m-f805)
 [![review 1](https://img.shields.io/badge/review-report%201-blue)](https://github.com/computorg/published-202301-chagneux-macrolitter/issues/1)
 [![review 2](https://img.shields.io/badge/review-report%202-blue)](https://github.com/computorg/published-202301-chagneux-macrolitter/issues/2)
 [![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/computorg/published-202301-chagneux-macrolitter/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/computorg/published-202301-chagneux-macrolitter)
