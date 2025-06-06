@@ -1,54 +1,23 @@
-name: build
-on:
-  schedule:
-    - cron: '0 0 * * 0' 
-  push:
-    branches:
-      - master
-      - main
+name: Main Workflows
 
-env: # Change this if needed
-  quarto_file: ${{ github.event.repository.name }}
-  GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+on:
+  push:
+    branches: ["main","master"]
+  repository_dispatch:
+    types: [custom-event] 
+  workflow_dispatch:
+  pull_request:
+    branches: ["main","master"]
 
 
 jobs:
-  build-deploy:
-    if: "!contains(github.event.head_commit.message, 'skip build')"
-    runs-on: ubuntu-latest
+  call_env_workflow:
+    uses: computorg/workflows/.github/workflows/global-env.yml@main
+  call_quartopublish_workflow:
+    permissions:
+      id-token: write
+      contents: write
+      pages: write
+    uses: computorg/workflows/.github/workflows/publish-render.yml@main
+    needs: call_env_workflow
 
-    steps:
-      - name: Checking out repository for Github action
-        uses: actions/checkout@v3
-
-      - name: Installing dependencies with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
-        with:
-          cache-env: true
-
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
-          version: pre-release
-  
-      - name: Install Computo extension for Quarto
-        run: |
-            quarto add --no-prompt computorg/computo-quarto-extension
-      - name: Rendering with Quarto
-        shell: bash -l {0}
-
-        run: |
-            quarto render ${{ env.quarto_file }}.qmd
-            mkdir _build
-            mv ${{ env.quarto_file }}.html _build/index.html
-            mv -vf ${{ env.quarto_file }}_files figures ${{ env.quarto_file }}.pdf _build/
-            cp environment.yml _build/
-            touch _build/.nojekyll
-
-      - name: Deploying article on github pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          BRANCH: gh-pages
-          FOLDER: _build
-          CLEAN: true

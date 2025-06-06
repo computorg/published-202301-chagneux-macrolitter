@@ -2,19 +2,18 @@ name: computo
 channels:
     - conda-forge
 dependencies:
-    - python==3.9
+    - jupyter
+    - numpy
+    - matplotlib
+    - scipy 
     - pip
+    - pandas 
+    - tqdm
+    - seaborn
+    - pycocotools
+    - filterpy
+    - scikit-image
+    - pykalman
     - pip:
-        - jupyter
-        - numpy
-        - matplotlib
-        - pycocotools
-        - scipy 
         - opencv_python
-        - pandas 
-        - pykalman
-        - filterpy
-        - scikit-image
-        - tqdm
-        - seaborn
         - pytk
