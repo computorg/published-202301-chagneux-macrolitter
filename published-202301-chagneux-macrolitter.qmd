@@ -64,8 +64,6 @@ citation:
   doi: "10.57750/845m-f805"
   publisher: "French Statistical Society"
   issn: "2824-7795"
-  pdf-url: "https://computo.sfds.asso.fr/published-202301-chagneux-macrolitter/published-202301-chagneux-macrolitter.pdf"
-  url: "https://computo.sfds.asso.fr/published-202301-chagneux-macrolitter/"
 google-scholar: true
 bibliography: references.bib
 github-user: computorg
