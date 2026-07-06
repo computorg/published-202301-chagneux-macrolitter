@@ -1,16 +1,49 @@
-/.quarto/
-DS_Store
+# R and co
 .Rhistory
-/.luarc.json
+.Rprofile
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj
+.Rproj.user
+.Rproj.user/
+/*.Rcheck/
+renv/
+
+# Python and co
+_environment
+/.micromamba/
+/.joblib
+/.pytest_cache/
+scripts/__pycache__/
+
+# Quarto tmp files
 /.quarto/
 /*_files
 /*_cache
 /_freeze
+_site/
+/cache/
+
+# Quarto extension files
 _extensions/
-.Rprofile
-published-202301-chagneux-macrolitter.html
-published-202301-chagneux-macrolitter.pdf
-_environment
-/.micromamba/
-/_siteg/
-/surfnet/
+logo_text_white.pdf
+logo_notext_white.png
+
+# Quarto output files
+main.pdf
+main.html
+main.ipynb
+main.tex
+
+# Latex compilation files
+*.aux
+*.log
+*.toc
+
+# Various system files
+DS_Store
+/.luarc.json
+
+
+**/*.quarto_ipynb

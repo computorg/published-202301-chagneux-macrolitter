@@ -1,6 +1,7 @@
 project:
   render:
-    - published-202301-chagneux-macrolitter.qmd
+    - main.qmd
+    - README.qmd
 
 title: "Macrolitter video counting on riverbanks using state space models and moving cameras "
 subtitle: ""
@@ -71,8 +72,7 @@ google-scholar: true
 bibliography: references.bib
 github-user: computorg
 repo: "published-202301-chagneux-macrolitter"
-draft: false
-published: true
+status: published
 format:
   computo-html: default
   computo-pdf: default
