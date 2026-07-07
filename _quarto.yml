@@ -71,6 +71,10 @@ citation:
   url: "https://computo-journal.org/published-202301-chagneux-macrolitter/"
 google-scholar: true
 bibliography: references.bib
+related-identifiers:
+  - relation: IsVersionOf
+    type: URL
+    identifier: "https://hal.science/hal-04497971v1"
 github-user: computorg
 repo: "published-202301-chagneux-macrolitter"
 status: published
