@@ -1,0 +1,66 @@
+cff-version: 1.2.0
+message: If you use or cite this article, please use the metadata provided in 'preferred-citation'.
+title: 'Macrolitter video counting on riverbanks using state space models and moving
+  cameras '
+authors:
+- family-names: Chagneux
+  given-names: Mathis
+  affiliation: Telecom Paris, LTCI
+- family-names: Corff
+  given-names: Sylvain Le
+  orcid: https://orcid.org/0000-0001-5211-2328
+  affiliation: Sorbonne Université, UMR 8001 (LPSM)
+- family-names: Gloaguen
+  given-names: Pierre
+  orcid: https://orcid.org/0000-0003-2239-5413
+  affiliation: AgroParisTech, UMR MIA 518
+- family-names: Ollion
+  given-names: Charles
+  orcid: https://orcid.org/0000-0002-6763-701X
+  affiliation: Naia Science
+- family-names: Lepâtre
+  given-names: Océane
+  orcid: https://orcid.org/None
+  affiliation: Surfrider Foundation Europe
+- family-names: Bruge
+  given-names: Antoine
+  orcid: https://orcid.org/0000-0002-0548-234X
+  affiliation: Surfrider Foundation Europe
+url: https://computo-journal.org/published-202301-chagneux-macrolitter/
+preferred-citation:
+  type: article
+  title: 'Macrolitter video counting on riverbanks using state space models and moving
+    cameras '
+  authors:
+  - family-names: Chagneux
+    given-names: Mathis
+    affiliation: Telecom Paris, LTCI
+  - family-names: Corff
+    given-names: Sylvain Le
+    orcid: https://orcid.org/0000-0001-5211-2328
+    affiliation: Sorbonne Université, UMR 8001 (LPSM)
+  - family-names: Gloaguen
+    given-names: Pierre
+    orcid: https://orcid.org/0000-0003-2239-5413
+    affiliation: AgroParisTech, UMR MIA 518
+  - family-names: Ollion
+    given-names: Charles
+    orcid: https://orcid.org/0000-0002-6763-701X
+    affiliation: Naia Science
+  - family-names: Lepâtre
+    given-names: Océane
+    orcid: https://orcid.org/None
+    affiliation: Surfrider Foundation Europe
+  - family-names: Bruge
+    given-names: Antoine
+    orcid: https://orcid.org/0000-0002-0548-234X
+    affiliation: Surfrider Foundation Europe
+  journal: Computo
+  issn: 2824-7795
+  url: https://computo-journal.org/published-202301-chagneux-macrolitter/
+  publisher:
+    name: French Statistical Society
+  doi: 10.57750/845m-f805
+  year: 2023
+doi: 10.57750/845m-f805
+date-released: '2023-01-01'
